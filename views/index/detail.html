@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>详情</title>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../../css/detail.css">
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div style="height: 2vh;width: 100%;">
+                <mt-header title="详情">
+                    <a slot="left" href="../index.html">
+                        <mt-button icon="back">返回</mt-button>
+                    </a>
+                </mt-header>
+            </div>
+
+            <div class="detail-head">
+                <el-avatar :size="50"
+                    src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+                    class="avatar"></el-avatar>
+                <div style="width: 11rem;">
+                    <p>mingzi</p>
+                    <p>日期</p>
+                </div>
+                <el-button type="danger">拨打电话</el-button>
+            </div>
+
+            <div class="map-detail">
+                <!-- <img src="../images/map.png" class="map-class" /> -->
+                <i class="el-icon-location-outline"></i>
+                <span class="map-des">这里是地址</span>
+            </div>
+            <div style="padding:0 1rem; width:100%">
+                <p>天越在线抖音企业营销培训</p>
+                <img src="../../images/1.jpg" style="width:90%" />
+            </div>
+            <!--分享-->
+            <div class="share">
+                <el-row>
+                    <el-button round icon="el-icon-chat-dot-round"
+                        style="width:40%;font-size:100%;padding-left: 0.5rem;padding-right: 0.5rem;">分享微信</el-button>
+                    <el-button round style="width:40%;font-size:100%;padding-left: 0.5rem;padding-right: 0.5rem;"
+                        icon="el-icon-share">分享二维码</el-button>
+                </el-row>
+            </div>
+            <!--举报查看评论等-->
+            <div class="look">
+                <el-row class="row-class-danger">
+                    <i class="el-icon-warning-outline"></i>
+                    <span class="danger-info">举报信息</span>
+
+                    <i class="el-icon-view"></i>
+                    <span>11</span>
+                </el-row>
+                <div v-for="item in take" :key="item.sum" class="take">评论({{item.sum}})</div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+    <!-- import Vue before Mint UI -->
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="../../vue/vue.js"></script>
+    <!-- import JavaScript -->
+    <!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+    <script src="../../mintui/index.js"></script>
+    <!-- 引入组件库 -->
+    <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+    <script src="../../elementui/index.js"></script>
+    <!-- Swiper JS -->
+    <script src="../../js/swiper-bundle.min.js"></script>
+    <script>
+
+        //创建Vue实例,得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                take: [
+                    {
+                        sum: "0"
+                    }
+                ],
+            },
+            //方法
+            methods: {},
+            //计算属性
+            computed: {},
+            //过滤器
+            filter: {},
+            //侦听器
+            watch: {},
+        });
+    </script>
+</body>
+
+</html>

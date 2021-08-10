@@ -1,0 +1,18 @@
+.app {
+    height: 100vh;
+    width: 100vw;
+}
+
+.el-name-class {
+    height: 3vh;
+    padding-left: 1rem;
+}
+
+ /* 解决闪烁问题 */
+ [v-cloak] {
+    display: none;
+}
+
+.demo-input-suffix{
+    margin:2% 0;
+}

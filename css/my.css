@@ -1,0 +1,97 @@
+[v-cloak]{
+  display:none;
+}
+
+.user-class {
+    width: 100%;
+    height: 25%;
+  }
+  .shop-class {
+    height: 14vh;
+    width: 100%;
+  }
+  .user-img-class {
+    width: 100%;
+    height: 100%;
+  }
+  .myshop {
+    display: flex;
+    transform: translateY(60%);
+  }
+  
+  .myshop-text-left {
+    font-size: small;
+    margin-left: 6%;
+  }
+  
+  .myshop-text-right {
+    display: block;
+    float: right;
+    margin-left: 50%;
+    font-size: small;
+  }
+  
+  .myshop-img {
+    width: 4%;
+    margin-left: 2%;
+  }
+  
+  .img-div-class {
+    width: 100%;
+    height: 20%;
+  }
+  
+  .userinfo-header-line {
+    background: #e0e3da;
+    width: 96%;
+    height: 1%;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    margin-left: 2%;
+  }
+  .userinfo-header-line-under {
+    background: #e0e3da;
+    width: 100%;
+    height: 1vh;
+  }
+  
+  .img-class {
+    display: flex;
+    float: left;
+    width: 8%;
+    height: 8%;
+    margin-left: 10%;
+  }
+  
+  .title-class {
+    display: flex;
+    justify-content: center;
+    float: left;
+    width: 11%;
+    margin-left: 7.5%;
+    font-size: small;
+  }
+  
+  .info-img {
+    width: 70%;
+  }
+  
+  .info-title {
+    font-size: small;
+  }
+  
+  .info-div {
+    float: left;
+    width: 100%;
+  }
+  
+  .info-border {
+    text-align: center;
+    float: left;
+    width: 33%;
+    border-bottom: 1px #e0e3da solid;
+    border-right: 1px #e0e3da solid;
+  }
+  .info-bottom {
+    margin-bottom: 1rem;
+  }

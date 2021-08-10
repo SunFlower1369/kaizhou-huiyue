@@ -1,0 +1,59 @@
+[v-cloak] {
+  display: none;
+}
+
+.detail-head {
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin-top: 1rem;
+}
+
+.avatar {
+  margin-right: 0.5rem;
+}
+.map-detail {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  height: 2rem;
+  border-bottom: 1px #eeeeee solid;
+}
+
+.map-class {
+  height: 80%;
+}
+
+.share {
+  width: 100%;
+  margin: 1rem;
+}
+
+.look {
+  width: 100%;
+}
+
+.row-class-danger {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0.5rem 1rem;
+  border-bottom: 0.5rem #f8f8f8 solid;
+  width: 100%;
+}
+
+.danger-info {
+  color: red;
+  margin-left: 0.5rem;
+  width: 70%;
+}
+
+.take {
+  padding: 0.5rem 0 0.5rem 1rem;
+  font-size: 1.2rem;
+  border-bottom: 0.5rem #f8f8f8 solid;
+}
+
+.el-icon-warning-outline {
+  color: red;
+}

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家</title>
+    <link rel="stylesheet" href="../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../css/shop.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../js/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../css/foot.css">
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20vh;
+            border-bottom: 0.5rem rgb(224, 227, 218)solid;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: calc((100% - 30px) / 2);
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        a {
+            color: black;
+        }
+
+        /* .mint-tab-container{
+            margin-bottom: 2rem;
+        } */
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="demo-input-suffix">
+                <el-input placeholder="请输入内容" prefix-icon="el-icon-search"></el-input>
+            </div>
+
+            <!-- 按钮轮播 -->
+            <!-- Swiper -->
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" v-for="item in buttonImg">
+                        <div style="width: 100%;height: 100%;">
+                            <div>
+                                <img :src="item.img" alt="" style="width: 50%">
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem;display: block;">{{item.name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>
+
+
+            <!-- new -->
+
+            <div class="w-new">
+                <el-row class="new">
+                    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f"
+                        class="new-come">
+                    <!-- <div class="swiper-class">我是swiper</div> -->
+                    <div class=" button-swiper" style="height:8vh; width:40vw;">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" v-for="item in shopjoin" :key="item.id">
+                                <div>
+                                    <div class="one" style="font-size: 10px;">
+                                        恭喜【 <span style="color: red;">{{item.name}}</span> 】入驻
+                                    </div>
+                                    <div class="two" style="font-size: 10px;">
+                                        恭喜【 <span style="color: red;">{{item.name}}</span> 】入驻
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <el-button type="danger" @click="join">我要入驻</el-button>
+                </el-row>
+            </div>
+
+            <!-- tables -->
+
+            <mt-navbar v-model="selected">
+                <mt-tab-item id="1">距离最近</mt-tab-item>
+                <mt-tab-item id="2">最新入驻</mt-tab-item>
+                <mt-tab-item id="3">人气最高</mt-tab-item>
+            </mt-navbar>
+
+            <!-- 距离最近tab-container -->
+            <mt-tab-container v-model="selected">
+                <!-- 距离最近 -->
+                <mt-tab-container-item id="1">
+                    <ul>
+                        <!-- 上拉加载 -->
+                        <mt-loadmore :bottom-method="loadBottom3" :bottom-all-loaded="allLoaded3" ref="loadmore3">
+                            <li>
+                                <div v-for="item in ShopDetail" :key="item.id" class="container-child"
+                                    style="margin:0.5rem 0">
+                                    <div class="shop">
+                                        <a href="./shop/shopDetail.html">
+                                            <div style="display: flex;">
+                                                <img :src="item.img" class="shop-avatar">
+                                                <div class="name-tag">
+                                                    <span>{{item.name }}</span>
+                                                    <div class="score-take">
+                                                        <el-rate v-model="score" disabled show-score
+                                                            text-color="#ff9900" score-template="{value}分">
+                                                        </el-rate>
+                                                        <i class="people"> 人气：{{item.people}}</i>
+                                                        <i class="browse"> {{item.browse}}浏览</i>
+                                                    </div>
+                                                    <el-row class="row-map">
+                                                        <i class="el-icon-location-outline"></i>
+                                                        <i>{{ item.address }}</i>
+
+                                                    </el-row>
+
+                                                    <el-row style="margin:0 0 1% 0">
+                                                        <el-button type="warning" size="mini">{{item.kind1}}
+                                                        </el-button>
+                                                        <el-button type="primary" size="mini">{{item.kind2}}
+                                                        </el-button>
+                                                    </el-row>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="phone-distance">
+                                            <i class="el-icon-phone-outline"
+                                                style="color:red;font-size: 1.5rem;margin-left: 30%;"
+                                                @click="takephone"></i>
+                                            <p style="color: red;font-size: 1rem;">{{item.distance}}KM</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </mt-loadmore>
+                    </ul>
+
+                </mt-tab-container-item>
+                <!-- 最新入驻 -->
+                <mt-tab-container-item id="2">
+
+                </mt-tab-container-item>
+                <div class="userinfo-header-line-under"></div>
+                <!-- 人气最高 -->
+                <mt-tab-container-item id="3">
+                    <mt-cell v-for="n in 30" :title="'content ' + n" />
+                </mt-tab-container-item>
+
+                <div>
+                    <!-- <el-tabs v-model="activeName" :stretch="true" style="margin-bottom: 2rem;">
+                        <mt-tab-container></mt-tab-container>
+                        <el-tab-pane label="距离最近" name="first" style="margin: 0;">
+                            <ul>
+                                <li>
+                                    
+                                    <div v-for="item in ShopDetail" :key="item.id" class="container-child">
+                                        <div class="shop">
+                                            <a href="./shop/shopDetail.html">
+                                                <div style="display: flex;">
+                                                    <img :src="item.img" class="shop-avatar">
+                                                    <div class="name-tag">
+                                                        <span>{{item.name }}</span>
+                                                        <div class="score-take">
+                                                            <el-rate v-model="score" disabled show-score
+                                                                text-color="#ff9900" score-template="{value}分">
+                                                            </el-rate>
+                                                            <i class="people"> 人气：{{item.people}}</i>
+                                                            <i class="browse"> {{item.browse}}浏览</i>
+                                                        </div>
+                                                        <el-row class="row-map">
+                                                            <i class="el-icon-location-outline"></i>
+                                                            <i>{{ item.address }}</i>
+
+                                                        </el-row>
+
+                                                        <el-row style="margin:0 0 1% 0">
+                                                            <el-button type="warning" size="mini">{{item.kind1}}
+                                                            </el-button>
+                                                            <el-button type="primary" size="mini">{{item.kind2}}
+                                                            </el-button>
+                                                        </el-row>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <div class="phone-distance">
+                                                <i class="el-icon-phone-outline"
+                                                    style="color:red;font-size: 1.5rem;margin-left: 30%;"
+                                                    @click="takephone"></i>
+                                                <p style="color: red;font-size: 1rem;">{{item.distance}}KM</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </el-tab-pane>
+                        <el-tab-pane label="最新入驻" name="second">配置管理</el-tab-pane>
+                        <el-tab-pane label="人气最高" name="third">角色管理</el-tab-pane>
+                    </el-tabs> -->
+
+                </div>
+
+        </div>
+        <!-- 底部导航栏 -->
+        <div id="nav">
+            <ul>
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="./gift.html">积分商城</a>
+                </li>
+                <li>
+                    <a href="./issue.html">发布</a>
+                </li>
+                <li class="avtive">
+                    <a href="./shop.html">商家</a>
+                </li>
+                <li>
+                    <a href="./my.html">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../js/swiper-bundle.min.js"></script>
+<script>
+
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            selected: "1",
+            tabbar: "商家",
+            activeName: "first",
+            score: 4,
+            loading: false,
+            allLoaded3: false,
+            ShopDetail: [{
+                id: 1,
+                img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
+                name: "天越网络",
+                score: "3",
+                people: "10",
+                browse: "1",
+                address: "开州大道东",
+                kind1: "商务服务",
+                kind2: "网络营销",
+                phone: "12345678911",
+                distance: "11"
+            }, {
+                id: 2,
+                img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
+                name: "天越网络",
+                score: "2.5",
+                people: "4",
+                browse: "1",
+                address: "开州大道东",
+                kind1: "商务服务",
+                kind2: "网络营销",
+                phone: "12345678911",
+                distance: "11"
+            },],
+            buttonImg: [{
+                name: "家具建材",
+                img: "../images/shop.png"
+            }, {
+                name: "餐饮美食",
+                img: "../images/shop.png"
+            }, {
+                name: "休闲娱乐",
+                img: "../images/shop.png"
+            }, {
+                name: "购物天地",
+                img: "../images/shop.png"
+            }, {
+                name: "生活服务",
+                img: "../images/shop.png"
+            }, {
+                name: "汽车服务",
+                img: "../images/shop.png"
+            }, {
+                name: "母婴专区",
+                img: "../images/shop.png"
+            }, {
+                name: "教育培训",
+                img: "../images/shop.png"
+            }, {
+                name: "房产相关",
+                img: "../images/shop.png"
+            }, {
+                name: "婚庆摄影",
+                img: "../images/shop.png"
+            },],
+            shopjoin: [{
+                id: 1,
+                name: "天越"
+            }, {
+                id: 2,
+                name: "天越222222222"
+            }, {
+                id: 3,
+                name: "天越3"
+            }]
+        },
+        //方法
+        methods: {
+            takephone() {
+            },
+            join() {
+                window.location.href = './issue/shopJoin.html'
+            },
+
+            // loadBottom() {
+            //     var maxId = this.ShopDetail[this.ShopDetail.length - 1].id
+            //     this.ShopDetail.push(
+            //         {
+            //             id: maxId + 1,
+            //             img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
+            //             name: "天越网络",
+            //             score: "3",
+            //             people: "10",
+            //             browse: "1",
+            //             address: "开州大道东",
+            //             kind1: "商务服务",
+            //             kind2: "网络营销",
+            //             phone: "12345678911",
+            //             distance: "11"
+            //         })
+            //     this.$refs.loadmore.onBottomLoaded();
+            // },
+            loadBottom3() {// load more data
+                //this.allLoaded = true;// if all data are loaded
+
+                var maxId = this.ShopDetail[this.ShopDetail.length - 1].id
+                this.ShopDetail.push(
+                    {
+                        id: maxId + 1,
+                        img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
+                        name: "天越网络",
+                        score: "3",
+                        people: "10",
+                        browse: "1",
+                        address: "开州大道东",
+                        kind1: "商务服务",
+                        kind2: "网络营销",
+                        phone: "12345678911",
+                        distance: "11"
+                    }, {
+                    id: maxId + 2,
+                    img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
+                    name: "天越网络",
+                    score: "3",
+                    people: "10",
+                    browse: "1",
+                    address: "开州大道东",
+                    kind1: "商务服务",
+                    kind2: "网络营销",
+                    phone: "12345678911",
+                    distance: "11"
+                })
+                this.$refs.loadmore3.onBottomLoaded();
+            }
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        slidesPerColumn: 2,
+        spaceBetween: 20,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+    });
+    var swiper = new Swiper('.button-swiper', {
+        direction: 'vertical',
+        loop: true,
+        autoplay: {
+            delay: 3000,
+            stopOnLastSlide: false,
+            disableOnInteraction: true,
+        },
+    });
+</script>
+
+</html>

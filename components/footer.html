@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+</head>
+
+<body>
+
+
+    <!-- 底部导航栏 -->
+    <div>
+        <mt-tabbar v-model="tabbar">
+            <mt-tab-item id="首页">
+                <a href="../index.html"> <img slot="icon" src="">
+                    首页</a>
+            </mt-tab-item>
+            <mt-tab-item id="积分商城">
+                <a href="../gift.html">
+                    <img slot="icon" src="">
+                    积分商城
+                </a>
+            </mt-tab-item>
+            <mt-tab-item id="发布">
+                <a href="../issue.html">
+                    <img slot="icon" src="">
+                    发布
+                </a>
+            </mt-tab-item>
+            <mt-tab-item id="商家">
+                <a href="../shop.html">
+                    <img slot="icon" src="">
+                    商家
+                </a>
+            </mt-tab-item>
+            <mt-tab-item id="个人中心">
+                <a href="../center.html">
+                    <img slot="icon" src="">
+                    个人中心
+                </a>
+            </mt-tab-item>
+        </mt-tabbar>
+    </div>
+
+    <script>
+        //创建Vue实例,得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {},
+            //方法
+            methods: {},
+            //计算属性
+            computed: {},
+            //过滤器
+            filter: {},
+            //侦听器
+            watch: {},
+        });
+    </script>
+</body>
+
+</html>

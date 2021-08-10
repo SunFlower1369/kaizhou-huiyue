@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布</title>
+    <link rel="stylesheet" href="../js/mintui/style.css">
+    <link rel="stylesheet" href="../css/issue.css">
+    <link rel="stylesheet" href="../css/foot.css">
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <!--商家入驻-->
+            <a href="./issue/shopJoin.html">
+                <div class="shop-join">
+                    <img src="../images/shop.png" class="shop-img" />
+                    <div class="shop-detail">
+                        <p style="font-size:1rem">商家/店铺/便民，点击申请入驻</p>
+                        <p style="font-size:0.8rem">本地宣传，简单有效，方便快捷！</p>
+                    </div>
+                    <div style="width: 2rem;height: 2rem;">
+                        <img src="../images/right.png" style="height: 100%;">
+                    </div>
+                </div>
+            </a>
+
+            <!--发布类别-->
+            <div class="issue-class">
+                <span>请选择信息发布类型</span>
+            </div>
+
+            <!--功能按钮-->
+            <!-- <div class="info" id="info">
+                <div class="info-div">
+                    <div v-for="item in infoArr" class="info-border" :key="item.title">
+                        <div class="info-bottom">
+                            <img :src="item.img" class="info-img" />
+                            <div>
+                                <span class="info-title">{{item.title}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+            <!--功能按钮-->
+            <div class="info" id="info">
+                <div class="info-div">
+                    <!-- <div v-for="item in infoArr" class="info-border" :key="item.title"> -->
+                    <a href="./issue/issueMo.html">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src=" ../images/my/issue.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">家居建材</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/myissue.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">餐饮美食</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/sign.jpg" class="info-img" />
+                                <div>
+                                    <span class="info-title">休闲娱乐</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a><a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/wallet.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">酒店旅游</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/mypersonal.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">购物天地</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src=" ../images/my/manager.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">生活服务</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">汽车服务</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">母婴专区</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">教育培训</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">房产相关</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">婚庆摄影</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <div id="nav">
+            <ul>
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="./gift.html">积分商城</a>
+                </li>
+                <li class="avtive">
+                    <a href="./issue.html">发布</a>
+                </li>
+                <li>
+                    <a href="./shop.html">商家</a>
+                </li>
+                <li>
+                    <a href="./my.html">个人中心</a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../js/swiper-bundle.min.js"></script>
+    <script>
+
+        //创建Vue实例,得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tabbar: "发布",
+                infoArr: [
+                    {
+                        title: "家居建材",
+                        img: '../images/my/waitpay.png',
+                        opentype: "issue",
+                        href: ""
+                    },
+                    {
+                        title: "餐饮美食",
+                        img: "../images/my/myissue.png",
+                        opentype: "myissue",
+                        href: ""
+                    },
+                    {
+                        title: "休闲娱乐",
+                        img: "../images/my/sign.jpg",
+                        opentype: "sign",
+                        href: ""
+                    },
+                    {
+                        title: "酒店旅游",
+                        img: "../images/my/wallet.png",
+                        opentype: "wallet",
+                        href: ""
+                    },
+                    {
+                        title: "购物天地",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "person",
+                        href: ""
+                    },
+                    {
+                        title: "生活服务",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "rmanage",
+                        href: ""
+                    },
+                    {
+                        title: "汽车服务",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "delete",
+                        href: "true"
+                    },
+                    {
+                        title: "母婴专区",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "wallet",
+                        href: ""
+                    },
+                    {
+                        title: "教育培训",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "person",
+                        href: ""
+                    },
+                    {
+                        title: "房产相关",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "rmanage",
+                        href: ""
+                    },
+                    {
+                        title: "婚庆摄影",
+                        img: "../images/my/mypersonal.png",
+                        opentype: "delete",
+                        href: "true"
+                    }
+                ]
+            },
+            //方法
+            methods: {},
+            //计算属性
+            computed: {},
+            //过滤器
+            filter: {},
+            //侦听器
+            watch: {},
+        });
+    </script>
+</body>
+
+</html>

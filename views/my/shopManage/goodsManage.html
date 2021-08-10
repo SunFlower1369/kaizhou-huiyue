@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家管理-商品管理</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #eeeeee;
+        }
+        *{
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+
+        <div v-for="item in goods" :key="item.id"
+            style="display: flex;align-items: center;height:17vh;background-color: white;border-bottom: 1px #eeeeee solid;padding: 0 0 0.5rem 0;">
+            <!-- 商品头像 -->
+            <div style="width: 20%;height: 100%;">
+                <img :src="item.goodimg" style="height: 100%;width: 100%;">
+            </div>
+            <!-- 信息等 -->
+            <div style="flex: 1;">
+                <div style="margin :0.2rem 0">{{item.goodname}}</div>
+                <div style="margin :0.2rem 0">{{item.goodsort}}-{{item.shopname}}</div>
+                <div style="margin :0.2rem 0"><span
+                        style="text-decoration: line-through;color: #eeeeee;">门市价:{{item.goodprice}}</span>
+                    <span style="color: red;">实际售价:{{item.realprice}}</span>
+                </div>
+                <div style="display: block;margin :0.2rem 0">
+                    库存:{{item.stock}}剩余:{{item.surplus}}
+                    <div style="flex: 1; float: right;margin-right: 0.5rem;">
+                        <mt-button type="danger" size="small">删除</mt-button>
+                        <mt-button type="primary" size="small" style="margin-left: 0.5rem;">审核通过</mt-button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            goods: [
+                {
+                    id: 1,
+                    goodimg: '../../../images/mywallet/myadsense.svg',
+                    goodname: '你好',
+                    goodsort: '商品',
+                    shopname: '伟伟',
+                    goodprice: '1',
+                    realprice: '2',
+                    stock: '20',
+                    surplus: '19'
+                },
+                {
+                    id: 2,
+                    goodimg: '../../../images/mywallet/myadsense.svg',
+                    goodname: '你好',
+                    goodsort: '商品',
+                    shopname: '伟伟',
+                    goodprice: '1',
+                    realprice: '2',
+                    stock: '20',
+                    surplus: '19'
+                }
+            ]
+        },
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

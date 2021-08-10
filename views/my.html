@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>个人中心</title>
+    <link rel="stylesheet" href="../js/mintui/style.css">
+    <link rel="stylesheet" href="../css/my.css">
+    <link rel="stylesheet" href="../css/foot.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        a {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="container">
+            <div class="user-class">
+                <img :src="userImg" class="user-img-class" />
+            </div>
+            <div class="shop-class">
+                <div class="myshop" @click="allOrder">
+                    <span class="myshop-text-left">我的订单</span>
+                    <span class="myshop-text-right">查看所有订单</span>
+                    <i class="el-icon-arrow-right"></i>
+                </div>
+                <div class="userinfo-header-line"></div>
+                <div v-for="item in funcArr" :key="item.title">
+                    <div class="img-div-class">
+                        <img :src="item.img" class="img-class" />
+                    </div>
+                </div>
+                <div v-for="item in funcArr" :key="item.opentype">
+                    <span class="title-class">{{item.title}}</span>
+                </div>
+            </div>
+
+            <div class="userinfo-header-line-under"></div>
+            <!--功能按钮-->
+            <div class="info" id="info">
+                <div class="info-div" style="margin-bottom: 4rem;">
+                    <!-- <div v-for="item in infoArr" class="info-border" :key="item.title"> -->
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src=" ../images/my/issue.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">发布</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./my/myissue.html">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/myissue.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">我的发布</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/sign.jpg" class="info-img" />
+                                <div>
+                                    <span class="info-title">今日签到</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a><a href="./my/mywallet.html">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/wallet.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">我的钱包</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./my/personal.html">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/mypersonal.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">个人资料</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./my/shopManage.html">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src=" ../images/my/manager.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">商家管理</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="">
+                        <div class="info-border">
+                            <div class="info-bottom">
+                                <img src="../images/my/delete.png" class="info-img" />
+                                <div>
+                                    <span class="info-title">清除缓存</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部导航 -->
+        <div id="nav">
+            <ul>
+                <li>
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="./gift.html">积分商城</a>
+                </li>
+                <li>
+                    <a href="./issue.html">发布</a>
+                </li>
+                <li>
+                    <a href="./shop.html">商家</a>
+                </li>
+                <li class="avtive">
+                    <a href="./my.html">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+  <!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../js/swiper-bundle.min.js"></script>
+    <script>
+
+        //创建Vue实例,得到 ViewModel
+        var vm = new Vue({
+            el: '#app',
+            data: {
+                tabbar: "个人中心",
+                userImg:
+                    "https://img1.baidu.com/it/u=3066722569,2341705378&fm=26&fmt=auto&gp=0.jpg",
+                funcArr: [
+                    {
+                        title: "待付款",
+                        img: "../images/my/waitpay.png",
+                        opentype: "pay",
+                        href: ""
+                    },
+                    {
+                        title: "待发货",
+                        img: " ../images/my/waitdeliver.png",
+                        opentype: "deliver",
+                        href: ""
+                    },
+                    {
+                        title: "待收货",
+                        img: " ../images/my/waitrec.png",
+                        opentype: "rec",
+                        href: ""
+                    },
+                    {
+                        title: "待评价",
+                        img: " ../images/my/waitev.png",
+                        opentype: "ev",
+                        href: ""
+                    },
+                    {
+                        title: "售后",
+                        img: " ../images/my/after.png",
+                        opentype: "after",
+                        href: ""
+                    }
+                ],
+                infoArr: [
+                    {
+                        title: "发布",
+                        img: " ../images/my/issue.png",
+                        opentype: "issue",
+                        href: ""
+                    },
+                    {
+                        title: "我的发布",
+                        img: " ../images/my/myissue.png",
+                        opentype: "myissue",
+                        href: ""
+                    },
+                    {
+                        title: "今日签到",
+                        img: " ../images/my/sign.jpg",
+                        opentype: "sign",
+                        href: ""
+                    },
+                    {
+                        title: "我的钱包",
+                        img: " ../images/my/wallet.png",
+                        opentype: "wallet",
+                        href: ""
+                    },
+                    {
+                        title: "个人资料",
+                        img: " ../images/my/mypersonal.png",
+                        opentype: "person",
+                        href: ""
+                    },
+                    {
+                        title: "商家管理",
+                        img: " ../images/my/manager.png",
+                        opentype: "manager",
+                        href: ""
+                    },
+                    {
+                        title: "清除缓存",
+                        img: " ../images/my/delete.png",
+                        opentype: "delete",
+                        href: "true"
+                    }
+                ]
+            },
+            //方法
+            methods: {
+                allOrder() {
+                    window.location.href = './my/allOrder.html'
+                }
+            },
+            //计算属性
+            computed: {},
+            //过滤器
+            filter: {},
+            //侦听器
+            watch: {},
+        });
+    </script>
+</body>
+
+</html>

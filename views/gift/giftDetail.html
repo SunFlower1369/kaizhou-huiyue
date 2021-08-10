@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>积分兑换</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css">
+    <link rel="stylesheet" href="../../css/giftdetail.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        el-form-item {
+            border-bottom: 0.5px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <div style="height: 3vh;width: 100%;margin-bottom: 1rem;">
+            <mt-header title="详情">
+                <a slot="left" href="../gift.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+
+        <div v-for="item in num " :key="item.id" style="">
+            <!-- 轮播 -->
+            <div style="height: 30vh;border-bottom: 0.5px #DCDFE6 solid;margin-bottom: 24px;">
+                <mt-swipe>
+                    <mt-swipe-item v-for="img in swiper">
+                        <img :src="img.img" style="height:30vh;width: 100%;">
+                    </mt-swipe-item>
+                </mt-swipe>
+            </div>
+            <el-row class="el-name-class">美食优惠券</el-row>
+            <el-divider></el-divider>
+            <!-- 积分剩余库存等信息 -->
+            <div style="margin-bottom: 3rem;">
+                <el-row style="padding: 0 1rem;">
+                    <span>所需积分：{{item.num}}积分</span>
+                    <span style="float: right;">剩余库存：{{item.stock}}</span>
+                </el-row>
+            </div>
+            <!-- 详情信息 -->
+            <el-divider>详情</el-divider>
+            <div>
+                这里是详情地区
+            </div>
+            <!-- 底部按钮 -->
+            <div style="bottom:0; position:fixed;width: 100%;">
+                <mt-cell>
+                    <span style="float: left;" slot="title">所需积分：{{item.num}}积分</span>
+                    <mt-button type="danger" style="margin-right: 1rem;" @click="dialogFormVisible = true">立即兑换
+                    </mt-button>
+                </mt-cell>
+            </div>
+
+            <!-- 弹出框填写信息 -->
+            <div>
+                <!-- Form -->
+                <el-dialog title="这里是券的名字" :visible.sync="dialogFormVisible" width="80%" :modal="false">
+                    <div style="margin-top:-2rem;margin-bottom: 1rem;">
+                        <span style="color: red;">{{item.num}}积分</span>
+                        <div>
+                            <span>库存：剩余{{item.stock}}件</span>
+                        </div>
+                    </div>
+
+                    <el-form>
+                        <el-form-item label="收货人" :label-width="formLabelWidth">
+                            <el-input v-model="receive.name" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="联系电话" :label-width="formLabelWidth">
+                            <el-input v-model="receive.phone" autocomplete="off"></el-input>
+                        </el-form-item>
+
+                        <el-form-item label="详细地址" :label-width="formLabelWidth">
+                            <el-input v-model="receive.detailAddress" autocomplete="off"></el-input>
+                        </el-form-item>
+                        <el-form-item label="兑换数量" :label-width="formLabelWidth">
+                            <el-input-number size="mini" v-model="receive.num" :min="1"
+                                style="float: right;margin-top: 0.4rem;"></el-input-number>
+                        </el-form-item>
+                    </el-form>
+                    <div slot="footer" class="dialog-footer">
+                        <el-button @click="dialogFormVisible = false">取 消</el-button>
+                        <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+                    </div>
+                </el-dialog>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            swiper: [{
+                id: 1,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 2,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 3,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 4,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }],
+            num: [{
+                id: 1,
+                num: 500,
+                stock: 999
+            }],
+            dialogFormVisible: false,
+            receive: {
+                name: '',
+                phone: '',
+                address: '',
+                detailAddress: '',
+                num: 1,
+            },
+            formLabelWidth: '5rem'
+        },
+        //方法
+        methods: {
+            goBack() {
+                console.log('go back');
+            }
+
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

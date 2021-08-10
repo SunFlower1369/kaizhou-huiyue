@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家入驻</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        .el-upload--picture-card {
+            height: 100px;
+            width: 100px;
+        }
+
+        .el-upload-list--picture-card .el-upload-list__item {
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <mt-field label="店铺名称" placeholder="必填，输入门店的门店名"></mt-field>
+        <div style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;">
+
+            <span>店铺类型</span>
+            <div style="display: block;flex: 1;padding-right: 1rem;">
+                <div style="margin-left: 2.5rem;">
+                    <mt-popup v-model="popupVisible" position="bottom" style="width: 100%;">
+                        <div class="page-picker-wrapper">
+                            <mt-picker :slots="kindSlots" @change="onAddressChange" :visible-item-count="5"></mt-picker>
+                        </div>
+                    </mt-popup>
+                    <p class="page-picker-desc" @click="pop">{{ kind }} / {{juti}} <i class="el-icon-caret-bottom"></i>
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        <mt-field label="联系人" placeholder="必填，输入门店联系人" type="text"></mt-field>
+        <mt-field label="联系电话" placeholder="必填，输入您的联系电话" type="number" :attr="{ maxlength: 11 }"></mt-field>
+        <mt-field label="详细地址" placeholder="填写您的地址" type="text"></mt-field>
+        <!-- <mt-field label="详细地址">开始时间</mt-field> -->
+        <div
+            style="display: flex;align-items: center;margin: 0.5rem 0 0.5rem 0.6rem;border-bottom: 1px #eeeeee solid;height: 5.5vh;">
+            <span>
+                营业时间
+            </span>
+            <el-time-picker v-model="start" placeholder="开始时间" style="width: 35%;margin-left: 1rem;" @focus="forbid">
+            </el-time-picker>
+            <el-time-picker v-model="end" placeholder="结束时间" style="width: 35%;" @focus="forbid">
+            </el-time-picker>
+        </div>
+        <div style="display: flex;align-items: center;height: 4vh;margin-left: 0.6rem;">店铺介绍（选填）</div>
+        <mt-field placeholder="请输入店铺介绍" type="textarea" rows="4"></mt-field>
+        <div style="display: flex;align-items: center;height: 4vh;margin-left: 0.6rem;">购买须知（选填）</div>
+        <mt-field placeholder="请输入购买须知" type="textarea" rows="4"> </mt-field>
+        <div
+            style="display: flex;align-items: center;justify-content: center;height: 5vh;border-bottom: 1px #eeeeee solid;">
+            店铺照片</div>
+        <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :limit="4"
+            :on-remove="handleRemove">
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-button type="danger" style="width: 80%;margin: 1rem 10%;">支付￥:*元,确认新入驻</el-button>
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    const kind = {
+        '餐饮美食': ['早餐早点', '饭店餐厅', '快餐外卖', '烧烤麻辣', '夜宵天地', '火锅香辣', '茶餐西餐', '甜品饮料', '零食水果'],
+        '休闲娱乐': ['美容美发', '游戏电玩 ', '文体户外', '汗蒸养生', '网吧网咖', '游泳馆', '健身房', '按摩推拿', '足浴洗浴', '咖啡厅', 'KTV', '酒吧', '电影院', '茶馆'],
+        '酒店旅游': ['星级酒店', '旅游包年', '商务宾馆', '旅行社', '旅游景点', '农家乐', '度假村'],
+        '购物天地': ['文具办公', '美容护肤', '数码科技', '保健养生', '服装鞋包', '眼镜饰品', '家用电器', '手机专卖', '户外运动', '名茶烟酒', '珍宝钟表', '鲜花礼品', '商行超市', '生鲜特产', '生鲜水产', '海鲜水产'],
+        '生活服务': ['的士/代驾', '家政服务', '送水站', '宠物服务', '开锁修锁', '管道疏通', '家电维修', '二手回收', '衣服洗护', '搬家服务', '快递服务', '物流服务', '货物运输', '其他服务'],
+        '汽车服务': ['摩托车/电动车', '4S店', '汽车美容', '维修保养', '驾校教练', '汽配销售', '车险信贷', '汽车销售', '汽车租聘', '共享汽车'],
+    };
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            dialogImageUrl: '',
+            dialogVisible: false,
+            popupVisible: false,
+            select: '',
+            start: '',
+            end: '',
+            kindSlots: [
+                {
+                    flex: 1,
+                    values: Object.keys(kind),
+                    className: 'slot1',
+                    textAlign: 'center'
+                }, {
+                    divider: true,
+                    content: '-',
+                    className: 'slot2'
+                }, {
+                    flex: 1,
+                    values: ['早餐早点'],
+                    className: 'slot3',
+                    textAlign: 'center'
+                }
+            ],
+            kind: '餐饮美食',
+            juti: '早餐早点'
+        },
+        //方法
+        methods: {
+            forbid() {
+                //禁止软键盘弹出
+                document.activeElement.blur();
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            pop() {
+                this.popupVisible = true
+            },
+            onAddressChange(picker, values) {
+                picker.setSlotValues(1, kind[values[0]]);
+                this.kind = values[0];
+                this.juti = values[1];
+            },
+            // handlePictureCardPreview(file) {
+            //     this.dialogImageUrl = file.url;
+            //     this.dialogVisible = true;
+            // }
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

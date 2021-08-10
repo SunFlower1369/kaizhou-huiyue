@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家管理-所有订单</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #eeeeee;
+        }
+        *{
+            font-size: 12px;
+        }
+        .mint-badge.is-size-normal{
+            padding: 1px 3px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+
+        <div style="display: flex;background-color: white;border-bottom: 0.5rem #eeeeee solid;padding: 0.6rem 0;">
+            <!-- 头像 -->
+            <div style="width: 15%;">
+                <img src="../../../images/mywallet/myadsense.svg" style="width: 100%;">
+            </div>
+            <!-- 信息等 -->
+            <div style="flex: 1;margin-left: 0.3rem">
+                <div style="display: block;">
+                    <span>名字</span>
+                    <span style="float:right; margin-right: 0.5rem;">后台获取时间</span>
+                </div>
+                <div style="display: block;margin: 0.5rem 0">
+                    <span>订单总价￥:*元</span>
+                    <mt-badge type="primary" style="float: right;margin-right: 0.5rem;">使用没</mt-badge>
+                </div>
+                <!-- 订单详情 -->
+                <div style="display: block;">
+                    <div>
+                        <span>订单详情：</span>
+                        <mt-badge type="success" style="float: right; border-radius: 0px;margin-right: 0.5rem;">支付没
+                        </mt-badge>
+                    </div>
+                    <div>
+                        价格
+                    </div>
+                    <div>
+                        收件人:获取
+                    </div>
+                    <div>
+                        收件地址:获取
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

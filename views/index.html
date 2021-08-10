@@ -1,0 +1,396 @@
+<html>
+
+<head>
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- import CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css"> -->
+    <link rel="stylesheet" href="../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <link rel="stylesheet" href="../elementui/index.css"> -->
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../js/swiper-bundle.min.css">
+    <link rel="stylesheet" href="../css/foot.css">
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            height: 20vh;
+            border-bottom: 0.5rem rgb(224, 227, 218)solid;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: calc((100% - 30px) / 2);
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .mint-tab-container {
+            margin-bottom: 2rem;
+        }
+
+        a {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <!-- 底部导航栏tab-container -->
+        <!-- <mt-tab-container v-model="tabbar">
+            <mt-tab-container-item id="1"> -->
+        <!-- 搜索框 -->
+        <div class="demo-input-suffix">
+            <el-input placeholder="请输入内容" prefix-icon="el-icon-search"></el-input>
+        </div>
+        <!-- 轮播 -->
+        <div style="height: 25vh;">
+            <mt-swipe>
+                <mt-swipe-item v-for="img in swiper">
+                    <img :src="img.img" style="height: 25vh;width: 100%;">
+                </mt-swipe-item>
+            </mt-swipe>
+        </div>
+
+        <!-- 按钮轮播 -->
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in buttonImg">
+                    <a href="./index/swiper-button.html">
+                        <div style="width: 100%;height: 100%;">
+                            <div>
+                                <img :src="item.img" alt="" style="width: 50%">
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem;display: block;">{{item.name}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <!-- <div>
+
+             <mt-swipe :auto="4000">
+                <mt-swipe-item>
+                    <div style="display: block;float: left;">
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                    </div>
+                    <div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                        <div>1</div>
+                    </div>
+                </mt-swipe-item>
+                <mt-swipe-item>
+                    <div>
+                        <div>1</div>
+                        <div>1</div>
+                    </div>
+                    <div>
+                        <div>1</div>
+                        <div>1</div>
+                    </div>
+                </mt-swipe-item>
+            </mt-swipe> 
+        </div> -->
+        <!-- 发布和入驻 -->
+        <div style="display: flex;">
+            <img src="../images/index/issue.png" style="width: 45vw;margin: 1vh 0 1vh 3vw;">
+            <img src="../images/index/shopjoin.png" style="width: 45vw;margin: 1vh 0 1vh 3vw;">
+        </div>
+        <!-- 分割线 -->
+        <div style="background: #e0e3da; width: 100%; height: 1%;"></div>
+
+        <!-- 热门导航 -->
+
+        <mt-navbar v-model="selected">
+            <mt-tab-item id="1">热门推荐</mt-tab-item>
+            <mt-tab-item id="2">家居建材</mt-tab-item>
+            <mt-tab-item id="3">餐饮美食</mt-tab-item>
+            <mt-tab-item id="4">休闲娱乐</mt-tab-item>
+        </mt-navbar>
+
+        <!-- 热门tab-container -->
+        <mt-tab-container v-model="selected">
+            <!-- 热门推荐 -->
+            <mt-tab-container-item id="1">
+                <ul>
+                    <!-- 上拉加载 -->
+                    <mt-loadmore :bottom-method="loadBottom1" :bottom-all-loaded="allLoaded1" ref="loadmore1">
+                        <li style="margin-bottom: 2rem;">
+                            <div v-for="item in actives" :key="item.id" class="activemo-class">
+                                <!--头部头像等-->
+                                <div id="shop-name" class="active-head">
+                                    <div class="left" style="width: 70%;">
+                                        <div class="block">
+                                            <el-avatar :size="50"
+                                                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993">
+                                            </el-avatar>
+                                        </div>
+                                        <div class="name-class">
+                                            <span>{{item.name}}</span>
+                                        </div>
+                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">{{ item.tag
+                                            }}
+                                        </el-tag>
+                                    </div>
+
+                                    <mt-button type="danger" size="small">拨打电话</mt-button>
+                                </div>
+                                <!--发布信息图片等-->
+                                <div class="detail-img" @click="lookDetail(item.id)">
+                                    <div>
+                                        <span class="detail-des">123456</span>
+                                    </div>
+                                    <div v-for="img in detail" :key="img.id">
+                                        <img :src="img.detail_img" class="img-class" />
+                                    </div>
+                                </div>
+
+                                <!--时间等-->
+                                <div id="date-detail" class="date-detail">
+                                    <el-row style="margin:0 0 1rem 0">
+                                        <i class="el-icon-location-outline" style="color:red"></i>
+                                        这里是地址
+                                    </el-row>
+                                    <div class="time-detail">
+                                        <span class="issue-date-class">这里是日期几点发布的</span>
+                                        <span class="look-class issue-date-class">
+                                            查看详情
+                                            <i class="el-icon-d-arrow-right"></i>
+                                        </span>
+                                    </div>​​​​​​​
+                                    <div class="one">
+                                        <div class="one0"></div>
+                                        <i class="el-icon-view"></i>
+                                        <span class="see">
+                                            <span style="color:blue">**</span>人浏览
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="userinfo-header-line-under"></div>
+                            </div>
+                        </li>
+                    </mt-loadmore>
+                </ul>
+
+            </mt-tab-container-item>
+            <!-- 家居建材 -->
+            <mt-tab-container-item id="2">
+
+            </mt-tab-container-item>
+            <div class="userinfo-header-line-under"></div>
+            <!-- 餐饮美食 -->
+            <mt-tab-container-item id="3">
+                <mt-cell v-for="n in 30" :title="'content ' + n" />
+            </mt-tab-container-item>
+            <!-- 休闲娱乐 -->
+            <mt-tab-container-item id="4">
+                <mt-cell v-for="n in 30" :title="'content ' + n" />
+            </mt-tab-container-item>
+        </mt-tab-container>
+        <!-- <div> -->
+        <!-- </mt-tab-container-item> -->
+
+        <!-- 底部导航 -->
+        <div id="nav">
+            <ul>
+                <li class="avtive">
+                    <a href="./index.html">首页</a>
+                </li>
+                <li>
+                    <a href="./gift.html">积分商城</a>
+                </li>
+                <li>
+                    <a href="./issue.html">发布</a>
+                </li>
+                <li>
+                    <a href="./shop.html">商家</a>
+                </li>
+                <li>
+                    <a href="./my.html">个人中心</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../js/swiper-bundle.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                list: [1, 2, 3, 4],
+                loading: false,
+                selected: "1",
+                tabbar: "首页",
+                allLoaded1: false,
+                swiper: [{
+                    id: 1,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 2,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 3,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 4,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }],
+                actives: [
+                    {
+                        id: 1,
+                        avatar: "",
+                        name: "1",
+                        tag: "教育培训",
+                        title: "1345679",
+                    },
+                    {
+                        id: 2,
+                        avatar: "",
+                        name: "1",
+                        tag: "教育培训",
+                        title: "1345679",
+                    }
+                ],
+                detail: [{
+                    id: "10",
+                    detail_img:
+                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+                },
+                {
+                    id: "2",
+                    detail_img:
+                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+                },
+                {
+                    id: "3",
+                    detail_img:
+                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+                },
+                {
+                    id: "4",
+                    detail_img:
+                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+                }
+                ]
+                , buttonImg: [{
+                    name: "家具建材",
+                    img: "../images/shop.png"
+                }, {
+                    name: "餐饮美食",
+                    img: "../images/shop.png"
+                }, {
+                    name: "休闲娱乐",
+                    img: "../images/shop.png"
+                }, {
+                    name: "购物天地",
+                    img: "../images/shop.png"
+                }, {
+                    name: "生活服务",
+                    img: "../images/shop.png"
+                }, {
+                    name: "汽车服务",
+                    img: "../images/shop.png"
+                }, {
+                    name: "母婴专区",
+                    img: "../images/shop.png"
+                }, {
+                    name: "教育培训",
+                    img: "../images/shop.png"
+                }, {
+                    name: "房产相关",
+                    img: "../images/shop.png"
+                }, {
+                    name: "婚庆摄影",
+                    img: "../images/shop.png"
+                },]
+                ,
+
+            }
+        },
+        methods: {
+            lookDetail(id) {
+                console.log(id)
+                window.location.href = "./index/detail.html";
+            },
+            loadBottom1() {// load more data
+                //this.allLoaded = true;// if all data are loaded
+
+                var maxId = this.actives[this.actives.length - 1].id
+                this.actives.push(
+                    {
+                        id: maxId + 1,
+                        avatar: "",
+                        name: maxId + 1,
+                        tag: "教育培训",
+                        title: "1345679",
+                    },
+                    {
+                        id: maxId + 2,
+                        avatar: "",
+                        name: maxId + 2,
+                        tag: "教育培训",
+                        title: "1345679",
+                    })
+                this.$refs.loadmore1.onBottomLoaded();
+            }
+        },
+        mounted() {
+
+        },
+    })
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 5,
+        slidesPerColumn: 2,
+        spaceBetween: 5,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+    });
+</script>
+
+</html>

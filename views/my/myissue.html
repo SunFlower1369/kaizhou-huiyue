@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的发布</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <link rel="stylesheet" href="../../css/myissue.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .el-button+.el-button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+            <li style="margin-bottom: 2rem;">
+                <div v-for="item in actives" :key="item.id" class="activemo-class" style="margin-top: 1rem;">
+
+                    <div style="width: 15%;margin-left: 1rem;">
+                        <el-avatar :size="50"
+                            src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993">
+                        </el-avatar>
+                    </div>
+                    <div class="issue-head" style="margin-left:20%;margin-top: -3.3rem;">
+                        <div id="shop-name" style="display: flex;">
+                            <div class="left" style="width: 50%;">
+                                <div class="name-class">
+                                    <span>读取</span>
+                                </div>
+                                <div style="margin-top: 5%;">
+                                    <span>店铺名称</span>
+                                </div>
+                            </div>
+                            <div class="right" style="display: flex;align-items: center;">
+                                <el-tag type="success" effect="dark" size="small ">duqu读取
+                                </el-tag>
+                                <el-tag type="success" effect="dark" size="small ">已抢完
+                                </el-tag>
+                            </div>
+
+                        </div>
+                        <!--发布信息图片等-->
+                        <div @click="lookDetail(item.id)">
+                            <div>
+                                <span class="detail-des">123456</span>
+                            </div>
+                            <div v-for="img in detail" :key="img.id">
+                                <img :src="img.detail_img" class="img-class" />
+                            </div>
+                        </div>
+
+                        <!--时间等-->
+                        <div id="date-detail">
+                            <el-row style="margin:0 0 0.5rem 0">
+                                <i class="el-icon-location-outline" style="color:red"></i>
+                                这里是地址
+                            </el-row>
+                            <div class="time-detail">
+                                <span class="issue-date-class">这里是日期几点发布的</span>
+                                <span class="see">
+                                    <i class="el-icon-view"></i>
+                                    <span style="color:blue">10000</span>
+                                </span>
+                            </div>
+                        </div>
+                        <el-row style="margin:0.5rem 0">
+                            <el-button type="danger" size="small">删除</el-button>
+                            <el-button size="small">编辑</el-button>
+                            <el-button size="small">刷新</el-button>
+                            <el-button size="small">租广告位</el-button>
+                        </el-row>
+                    </div>
+                    <div class="userinfo-header-line-under"></div>
+                </div>
+            </li>
+        </ul>
+
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            actives: [
+                {
+                    id: 1,
+                    avatar: "",
+                    name: "1",
+                    tag: "教育培训",
+                    title: "1345679",
+                },
+                {
+                    id: 2,
+                    avatar: "",
+                    name: "1",
+                    tag: "教育培训",
+                    title: "1345679",
+                }
+            ],
+            detail: [{
+                id: "10",
+                detail_img:
+                    "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+            },
+            {
+                id: "2",
+                detail_img:
+                    "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+            },
+            {
+                id: "3",
+                detail_img:
+                    "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+            },
+            {
+                id: "4",
+                detail_img:
+                    "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
+            }
+            ]
+        },
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

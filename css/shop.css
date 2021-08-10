@@ -1,0 +1,77 @@
+[v-cloak]{
+    display:none;
+  }
+
+.demo-input-suffix {
+    margin: 2% 0;
+}
+
+.w-new {
+    height: 10vh;
+    width: 100%;
+    border-bottom: 0.5rem #eeeeee solid;
+}
+
+.new {
+    display: flex;
+    align-items: center;
+    height: 94%;
+    width: 94%;
+    margin-left: 3%;
+    border-bottom: 1px black solid;
+}
+
+.new-come {
+    height: 90%;
+}
+
+.swiper-class {
+    width: 60%;
+}
+.container-child {
+    display: flex;
+    float: left;
+    align-items: center;
+    height: 18vh;
+    width: 100vw;
+    border-bottom: 0.5rem #eeeeee solid;
+}
+
+.shop {
+    display: flex;
+    float: left;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.img-class {
+    display: flex;
+    align-items: center;
+    height: 70%;
+    margin-left: 1rem;
+}
+
+.shop-avatar {
+    width: 30%;
+    height: 90%;
+}
+
+.name-tag {
+    margin-left: 1rem;
+}
+
+.score-take {
+    margin-top: 0.3rem;
+    font-size: 0.7rem;
+}
+
+.phone-distance {
+}
+
+.row-map {
+    display: flex;
+    align-items: center;
+    margin: 0.3rem 0;
+    font-size: 0.7rem;
+    color: blue;
+}

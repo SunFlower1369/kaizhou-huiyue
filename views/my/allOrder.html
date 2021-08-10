@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>所有订单</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background: #eeeeee;
+        }
+
+        .mint-header {
+            background-color: white;
+            color: inherit;
+            font-size: 20px;
+        }
+
+        .mint-tab-item-label {
+            font-size: 16px;
+        }
+
+        .mint-button--small {
+            height: 26px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部返回等 -->
+        <mt-header title="我的订单">
+            <a href="../my.html" slot="left">
+                <mt-button icon="back"></mt-button>
+            </a>
+        </mt-header>
+        <!-- 导航 -->
+        <mt-navbar v-model="selected">
+            <mt-tab-item id="1">待付款</mt-tab-item>
+            <mt-tab-item id="2">代发货</mt-tab-item>
+            <mt-tab-item id="3">待收货</mt-tab-item>
+            <mt-tab-item id="4">待评价</mt-tab-item>
+            <mt-tab-item id="5">售后</mt-tab-item>
+        </mt-navbar>
+
+        <!-- tab-container -->
+        <mt-tab-container v-model="selected">
+            <mt-tab-container-item id="1">
+                <div style="height: 25vh;background: white;border-radius: 5%;margin: 0.5rem 0.5rem 0 0.5rem;">
+                    <div style="display: block;border-bottom: 1px #eeeeee solid;padding:0.3rem 0.5rem 0.3rem 1rem;">
+                        这里是订单号（从后台获取的）
+                        <span style="float:right;color:blue">发货没</span>
+                    </div>
+                    <div style="display: block;padding: 0.5rem 0.5rem 0.5rem 1rem">
+                        这里是名字（后端获取）
+                        <span style="float: right;">X1</span>
+                    </div>
+                    <div style="display: flex;height: 12vh;padding: 0 0.5rem 0 1rem;">
+                        <img src="../../images/photo.svg" style="height: 100%;">
+                        <div style="display: block;flex:1;">
+                            <div style="height: 20%; margin: 0.3rem 0;">这里是选择的</div>
+                            <div>下单时间</div>
+                            <div style="float: right;margin-top: 1.2rem;">
+                                总价信息等
+                            </div>
+                        </div>
+                    </div>
+                    <div style="display: block;">
+                        <el-row style="float: right;margin-right: 0.5rem;">
+                            <mt-button plain type="default" size="small">最新物流信息</mt-button>
+                            <mt-button plain type="danger" size="small">确认收货</mt-button>
+                        </el-row>
+                    </div>
+                </div>
+
+            </mt-tab-container-item>
+            <mt-tab-container-item id="2">
+                <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+            </mt-tab-container-item>
+            <mt-tab-container-item id="3">
+                <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            </mt-tab-container-item>
+            <mt-tab-container-item id="4">
+                <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            </mt-tab-container-item>
+            <mt-tab-container-item id="5">
+                <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            </mt-tab-container-item>
+        </mt-tab-container>
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            selected: "1",
+        },
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

@@ -1,0 +1,14 @@
+.gift{
+    display: flex;
+    float: left;
+    height: 30vh;
+    width: 46%;
+    margin-left: 3%;
+}
+ /* 解决闪烁问题 */
+ [v-cloak] {
+    display: none;
+}
+.demo-input-suffix{
+    margin: 2% 0;
+}

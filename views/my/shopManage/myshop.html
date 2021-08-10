@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家管理-我的店铺 </title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            background-color: #eeeeee;
+        }
+
+        .mint-button--default.is-plain {
+            color: blue;
+            border: 1px solid blue;
+        }
+
+        .mint-button {
+            height: auto;
+        }
+
+        .mint-button-text {
+            font-size: 15px;
+        }
+
+        .button-more {
+            height: 30px;
+            font-size: 18px;
+            margin: 0 2.5rem
+        }
+
+        * {
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div style="height: 22vh;background-color: white;border-bottom: 0.5rem #eeeeee solid;">
+            <!-- 头像信息等 -->
+            <div style="display: flex;align-items: center;height: 15vh;margin-bottom: 0.5rem;">
+                <!-- touxiang  -->
+                <div style="width: 25%;">
+                    <img src="../../../images/mywallet/myadsense.svg" style="width: 100%;">
+                </div>
+                <div style="flex:1;">
+                    <div style="margin:0.4rem 0">
+                        mingzi
+                    </div>
+                    <div style="margin:0.4rem 0">
+                        mingzi
+                    </div>
+                    <div style="margin:0.4rem 0">
+                        mingzi
+                    </div>
+                    <div style="display: block;margin:0.2rem 0">
+                        <mt-button disabled plain>获取时间</mt-button>
+                        <mt-badge size="small" color="green" style="font-size: 15px;float: right;margin-right: 1rem;">通过
+                        </mt-badge>
+                    </div>
+                </div>
+            </div>
+            <!-- 按钮等 -->
+            <div style="display: flex; align-items: center;">
+                <mt-button type="default" class="button-more">编辑</mt-button>
+                <mt-button type="default" class="button-more">预览</mt-button>
+                <mt-button type="default" class="button-more">下架</mt-button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

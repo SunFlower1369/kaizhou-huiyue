@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>商家管理-发布商品</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .userinfo-header-line-under {
+            background: #e0e3da;
+            width: 100%;
+            height: 0.5rem;
+        }
+
+        /* .mint-cell-text{
+            color: red;
+        } */
+        .el-upload--picture-card {
+            height: 100px;
+            width: 100px;
+        }
+
+        .el-upload-list--picture-card .el-upload-list__item {
+            height: 100px;
+            width: 100px;
+        }
+        *{
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div class="userinfo-header-line-under"></div>
+        <mt-field label="店铺归属"></mt-field>
+        <mt-field label="*店铺类型"></mt-field>
+        <mt-field label="*商品标题" placeholder="必填,输入商品标题" v-model="goodName"></mt-field>
+        <div style="display: flex;align-items: center;height: 6vh;margin-left: 0.6rem;">*商品详情</div>
+        <mt-field placeholder="请输入商品详情" type="textarea" rows="4"> </mt-field>
+        <mt-field label="门市价" placeholder="输入门市价" v-model="shopPrice"></mt-field>
+        <mt-field label="*实际售价" placeholder="必填,输入实际售价" v-model="realPrice"></mt-field>
+        <mt-field label="*商品库存" placeholder="必填,输入商品库存,0为无限制" v-model="goodStock"></mt-field>
+        <mt-cell title="截止日期">
+            <mt-switch v-model="lastDate" @change="handleChange(lastDate)"></mt-switch>
+        </mt-cell>
+        <div style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;" v-show="lastDate">
+
+            <span>*截止日期</span>
+            <div style="display: block;flex: 1;padding-right: 1rem;">
+                <div style="margin-left: 2rem;">
+                    <mt-datetime-picker v-model="pickerValue" type="date" year-format="{value} 年"
+                        month-format="{value} 月" date-format="{value} 日" ref="picker" @confirm="handleConfirm">
+                    </mt-datetime-picker>
+                    <span @click="selectDate">{{mydate}}<i class="el-icon-caret-bottom"></i></span>
+
+                </div>
+            </div>
+        </div>
+        <div class="userinfo-header-line-under"></div>
+        <div
+            style="display: flex;align-items: center;justify-content: center;height: 5vh;border-bottom: 1px #eeeeee solid;">
+            店铺照片</div>
+        <el-upload action="https://jsonplaceholder.typicode.com/posts/" list-type="picture-card" :limit="6"
+            :on-remove="handleRemove">
+            <i class="el-icon-plus"></i>
+        </el-upload>
+        <el-button type="danger" style="width: 80%;margin: 1rem 10%;">添加新商品</el-button>
+    </div>
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            goodName: '',
+            goodDetail: '',
+            shopPrice: '',
+            realPrice: '',
+            goodStock: '',
+            lastDate: false,
+            pickerValue: '',
+            mydate: '请输入截止日期'
+
+        },
+        //方法
+        methods: {
+            handleChange(lastDate) {
+                this.lastDate == !this.lastDate
+                console.log(this.lastDate)
+            },
+            selectDate() {
+                this.$refs.picker.open();
+            },
+            handleConfirm(value) {
+                //this.mydate = value.toString()
+                this.mydate = moment(value).format('yyyy-MM-DD')
+            },
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

@@ -1,0 +1,164 @@
+[v-cloak] {
+    display: none;
+}
+
+.app {
+    height: 100vh;
+    width: 100vw;
+}
+.foot-img {
+    height: 20px;
+    width: 20px;
+}
+
+a {
+    list-style: none;
+}
+
+.active-head {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 1rem;
+}
+.activemo-class{
+}
+.head-img {
+    display: flex;
+    float: left;
+    border-radius: 50%;
+    height: 10%;
+    width: 10%;
+    margin-left: 5%;
+}
+
+.block {
+    display: flex;
+    float: left;
+    margin-right: 1rem;
+}
+
+.name-class {
+    width: 60%;
+}
+
+.tag-class {
+    size: mini;
+}
+
+.phone-class {
+    float: right;
+}
+
+.detail-img {
+    height: 12vh;
+    margin-left: 2%;
+}
+
+.detail-des {
+    margin-left: 1%;
+    font-size: 18px;
+}
+
+.img-class {
+    display: flex;
+    float: left;
+    width: 22%;
+    margin: 1%;
+}
+
+.date-detail {
+    margin-left: 2%;
+}
+
+.map-detail {
+    margin: 2% 0 3% 0;
+    display: flex;
+    align-content: center;
+}
+
+.map-class {
+    height: 5%;
+    width: 5%;
+}
+
+.map-des {
+    font-size: 14px;
+}
+
+.go-class {
+    height: 50%;
+    width: 20%;
+}
+
+.time-detail {
+    display: flex;
+    align-content: center;
+    width: 100%;
+}
+
+.issue-date-class {
+    width: 80%;
+    font-size: 16px;
+    color: #6e6e6e;
+}
+
+.look-class {
+    float: right;
+    margin-right: 5%;
+    width: 30%;
+    color: blue;
+}
+
+.one {
+    width: 98%;
+    height: 4vh;
+    background-color: #eeeeee;
+    /*相对位置*/
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.one0 {
+    width: 0;
+    height: 0;
+    border: 15px solid #eeeeee;
+    border-top: none;
+    border-right-color: transparent;
+    border-left-color: transparent;
+    /*绝对位置*/
+    position: absolute;
+
+    /*将小三角形向右移10个像素*/
+    left: 7%;
+    /*将小三角形向上移90个像素*/
+    bottom: 90%;
+}
+
+.see-class {
+    width: 5%;
+    margin-left: 3%;
+}
+
+.see {
+    font-size: 12px;
+    color: #6e6e6e;
+}
+
+.userinfo-header-line-under {
+    background: #e0e3da;
+    width: 100%;
+    height: 0.5rem;
+    margin-top: 3%;
+}
+
+.el-icon-view {
+    margin-left: 1rem;
+    color: #6e6e6e;
+}
+
+.demo-input-suffix {
+    margin:2% 0;
+}

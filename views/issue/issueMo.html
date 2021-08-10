@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布模板</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        #app {
+            position: relative;
+            height: 100vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <mt-field placeholder="请输入你要发布的内容" type="textarea" rows="4" v-model="issuetext" required></mt-field> -->
+        <textarea rows="4" placeholder="请输入你要发布的内容" v-model="issuetext"
+            style="width: 100%;border: none;font-size: 1.2rem;" required></textarea>
+        <!-- 上传图片 -->
+        <div style="margin: 0.5rem 0;">
+            <el-upload class="upload-demo" ref="upload" action="https://jsonplaceholder.typicode.com/posts/"
+                list-type="picture">
+                <img src="../../images/photo.svg" style="height: 2rem;width: 2rem;" slot="trigger">
+            </el-upload>
+        </div>
+        <!-- 地址等 -->
+        <div style="display: flex;align-items: center;height: 4rem;border-bottom: 1px #eeeeee solid;">
+            <i class="el-icon-location-outline" style="color: blue;font-size: 1.5rem;"></i>
+            <span style="margin-left: 0.5rem;">这里的地址是自动获取的</span>
+            <i class="el-icon-arrow-right" style="margin-left: 6.5rem;"></i>
+        </div>
+        <div style="margin:1rem 0">
+            <el-row>
+                <i class="el-icon-mobile"></i>
+                <input type="number" placeholder="请输入您的电话号码" style="margin-left: 1rem;border: none;">
+            </el-row>
+        </div>
+        <mt-button type="danger" style="position: absolute;width: 90%;margin-left: 5%;bottom: 0;" @click="issueNow">
+            免费，立刻发布</mt-button>
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            issuetext: '',
+        },
+        //方法
+        methods: {
+            issueNow() {
+                window.location.href = '../my/myissue.html'
+            }
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>
