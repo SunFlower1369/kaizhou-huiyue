@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
+    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
+    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
+    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-header {
+            background-color: #f6f6f6;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <mt-header title="开通VIP会员卡">
+            <a slot="left" href="">
+                <mt-button icon="back"></mt-button>
+            </a>
+        </mt-header>
+        <!-- 名字和查看是否是会员 -->
+        <div style="display: flex;margin: 1rem ; align-items: center;">
+            <img src="./images/1.jpg" style="width:40px;height: 40px; border-radius: 50%;">
+            <mt-badge size="small" color="#ae8359" style="margin-left: 3rem;">是否开通会员（获取）</mt-badge>
+        </div>
+        <!-- VIP权益 -->
+        <div style="display: block;margin: 0 1rem;box-shadow: 1px 3px 2px red;">
+            <div
+                style="display: flex;align-items: center;border-bottom: 0.2rem #ae8359 solid;padding: 0.5rem 1rem;width: 40%;margin-left: 1rem;">
+                <img src="./VIP.svg" style="width: 20px; height: 20px;margin-right: 0.5rem;">
+                VIP会员卡权益
+            </div>
+            <div style="border:1px grey dashed"></div>
+            <!-- <div style="display: flex;">
+                <div style="width:33.3%;height: 10vh;align-items: center;justify-items: center;">
+                    <img src="./VIP.svg" style="width: 30%;">
+                    <div>省钱</div>
+                    <div style="display: flex;align-items: center;">
+                        <span>
+                            免费上门
+                        </span>
+                    </div>
+                </div>
+                <div style="width:33.3%;height: 10vh;background-color:red;"></div>
+                <div style="width:33.4%;background-color:green;height: 10vh;"></div>
+            </div> -->
+            
+        </div>
+    </div>
+
+</body>
+
+<!-- import Vue before Mint UI -->
+<script src='https://unpkg.com/vue/dist/vue.js'></script>
+<!-- import JavaScript -->
+<script src='https://unpkg.com/mint-ui/lib/index.js'></script>
+<!-- 引入组件库 -->
+<script src='https://unpkg.com/element-ui/lib/index.js'></script>
+<!-- 引入vue router -->
+<script src='https://unpkg.com/vue-router/dist/vue-router.js'></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {},
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>
