@@ -6,10 +6,7 @@
     <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>商家管理</title>
-    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
-    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
-    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
-    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <link rel="stylesheet" href="../../js/mintui/style.css">
     <!-- 引入样式 -->
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <style>
@@ -39,7 +36,8 @@
         .mint-cell-label {
             margin-left: 16%;
         }
-        a{
+
+        a {
             list-style: none;
             color: black;
             text-decoration: none;
@@ -50,48 +48,51 @@
 <body>
     <div id="app">
         <a href="./shopManage/myshop.html">
-        <mt-cell title="我的店铺" label="店铺信息修改，门店照片修改" >
-            <i class="el-icon-arrow-right"></i>
-            <img src="../../images/shop.png" slot="icon" width="45" style="margin-bottom: -6%;">
-        </mt-cell></a>
+            <mt-cell title="我的店铺" label="店铺信息修改，门店照片修改">
+                <i class="el-icon-arrow-right"></i>
+                <img src="../../images/shop.png" slot="icon" width="45" style="margin-bottom: -6%;">
+            </mt-cell>
+        </a>
         <a href="./shopManage/goodsManage.html">
-        <mt-cell title="商品管理" >
-            <i class="el-icon-arrow-right"></i>
-            <img slot="icon" src="../../images/shop.png" width="35">
-        </mt-cell></a>
+            <mt-cell title="商品管理">
+                <i class="el-icon-arrow-right"></i>
+                <img slot="icon" src="../../images/shop.png" width="35">
+            </mt-cell>
+        </a>
         <a href="./shopManage/issueGoods.html">
-        <mt-cell title="发布商品" >
-            <i class="el-icon-arrow-right"></i>
-            <img slot="icon" src="../../images/shop.png" width="35">
-        </mt-cell></a>
+            <mt-cell title="发布商品">
+                <i class="el-icon-arrow-right"></i>
+                <img slot="icon" src="../../images/shop.png" width="35">
+            </mt-cell>
+        </a>
         <a href="./shopManage/shopManageAllOrder.html">
-        <mt-cell title="所有订单" >
-            <i class="el-icon-arrow-right"></i>
-            <img slot="icon" src="../../images/shop.png" width="35">
-        </mt-cell></a>
+            <mt-cell title="所有订单">
+                <i class="el-icon-arrow-right"></i>
+                <img slot="icon" src="../../images/shop.png" width="35">
+            </mt-cell>
+        </a>
         <a href="">
-        <mt-cell title="核销入口">
-            <i class="el-icon-arrow-right"></i>
-            <img slot="icon" src="../../images/shop.png" width="35">
-        </mt-cell></a>
+            <mt-cell title="核销入口">
+                <i class="el-icon-arrow-right"></i>
+                <img slot="icon" src="../../images/shop.png" width="35">
+            </mt-cell>
+        </a>
         <a href="../issue/shopJoin.html">
-        <mt-cell title="新店入驻" >
-            <i class="el-icon-arrow-right"></i>
-            <img slot="icon" src="../../images/shop.png" width="35">
-        </mt-cell>
+            <mt-cell title="新店入驻">
+                <i class="el-icon-arrow-right"></i>
+                <img slot="icon" src="../../images/shop.png" width="35">
+            </mt-cell>
     </div>
 
 </body>
-
-<!-- import Vue before Mint UI -->
 <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
-<script src="../../vue/vue.js"></script>
+<script src="../../js/vue/vue.js"></script>
 <!-- import JavaScript -->
 <!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
-<script src="../../mintui/index.js"></script>
+<script src="../../js/mintui/index.js"></script>
 <!-- 引入组件库 -->
 <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
-<script src="../../elementui/index.js"></script>
+<script src="../../js/elementui/index.js"></script>
 <!-- Swiper JS -->
 <script src="../../js/swiper-bundle.min.js"></script>
 <script>

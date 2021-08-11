@@ -1,0 +1,263 @@
+<html>
+
+<head>
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <!-- import CSS -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/mint-ui/lib/style.css"> -->
+    <link rel="stylesheet" href="../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- <link rel="stylesheet" href="../elementui/index.css"> -->
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="../../js/swiper-bundle.min.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            margin-top: 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            height: 13vh;
+            border-bottom: 0.5rem rgb(224, 227, 218)solid;
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #fff;
+            height: calc((100% - 30px) / 2);
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+        .mint-button--default{
+            box-shadow: 0 0 0 0     ;
+        }
+        .mint-button{
+            height: 35px;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .mint-header {
+            background-color: transparent;
+            height: 60px;
+        }
+
+        .mint-searchbar {
+            padding: 0;
+            margin: 0 1rem;
+        }
+
+        .mint-search {
+            height: 5vh;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <!-- 头部搜索等 -->
+        <div style="height: 16vh;background: url(../../images/header-img.jpeg);">
+            <mt-header title="********">
+                <a slot="left">
+                    <mt-button>全国 <i class="el-icon-caret-bottom"></i></mt-button>
+                </a>
+                <mt-button slot="right"> <i class="el-icon-s-custom"></i> </mt-button>
+            </mt-header>
+            <!-- 搜索框 -->
+            <mt-search cancel-text="取消" placeholder="搜索" style="margin: 0.5rem 0;">
+            </mt-search>
+        </div>
+        <!-- 按钮轮播 -->
+        <!-- Swiper -->
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" v-for="item in buttonImg">
+                    <a href="./index/swiper-button.html">
+                        <div style="width: 100%;height: 100%;">
+                            <div>
+                                <img :src="item.img" alt="" style="width: 30%">
+                            </div>
+                            <div>
+                                <span style="font-size: 0.7rem;display: block;">{{item.name}}</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!-- 轮播图片等 -->
+
+        <div style="height: 15vh;">
+            <mt-swipe>
+                <mt-swipe-item v-for="img in swiper">
+                    <img :src="img.img" style="height: 15vh;width: 100%;">
+                </mt-swipe-item>
+            </mt-swipe>
+        </div>
+
+        <!-- 热门职位 -->
+        <div>
+            <div style="text-align: center;background-color: #eeeeee;padding: 0.5rem;">
+               <strong>热门职位</strong> 
+            </div>
+            <!-- 分类 -->
+            <div style="width: 100%;">
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+                <mt-button type="default" style="width: 20%;margin: 0.5rem 0 0.5rem 3%;">反复</mt-button>
+            </div>
+        </div>
+        <!-- 名企招聘 -->
+        <div>
+            <div style="text-align: center;background-color: #eeeeee;padding: 0.5rem;">
+                <strong>名企招聘</strong> 
+             </div>
+             <!-- 各类企业 -->
+             <div >
+                 <div style="height: 12vh;width: 45%;margin: 0.5rem 0 0.5rem 3% ;text-align: center;float: left;">
+                     <img src="../../images/header-img.jpeg"  style="width: 100%;height: 70%;">
+                    <span>
+                        你好呀
+                    </span>
+                 </div>
+                 <div style="height: 12vh;width: 45%;margin: 0.5rem 0 0.5rem 3% ;text-align: center;float: left;">
+                    <img src="../../images/header-img.jpeg"  style="width: 100%;height: 70%;">
+                   <span>
+                       你好呀
+                   </span>
+                </div>
+                <div style="height: 12vh;width: 45%;margin: 0.5rem 0 0.5rem 3% ;text-align: center;float: left;">
+                    <img src="../../images/header-img.jpeg"  style="width: 100%;height: 70%;">
+                   <span>
+                       你好呀
+                   </span>
+                </div>
+                <div style="height: 12vh;width: 45%;margin: 0.5rem 0 0.5rem 3% ;text-align: center;float: left;">
+                    <img src="../../images/header-img.jpeg"  style="width: 100%;height: 70%;">
+                   <span>
+                       你好呀
+                   </span>
+                </div>
+                <div style="height: 12vh;width: 45%;margin: 0.5rem 0 0.5rem 3% ;text-align: center;float: left;">
+                    <img src="../../images/header-img.jpeg"  style="width: 100%;height: 70%;">
+                   <span>
+                       你好呀
+                   </span>
+                </div>
+             </div>
+        </div>
+    </div>
+</body>
+
+<!-- import Vue before Mint UI -->
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+
+            return {
+                buttonImg: [{
+                    name: "家具建材",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "餐饮美食",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "休闲娱乐",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "购物天地",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "生活服务",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "汽车服务",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "母婴专区",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "教育培训",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "房产相关",
+                    img: "../../images/shop.png"
+                }, {
+                    name: "婚庆摄影",
+                    img: "../../images/shop.png"
+                },]
+                ,
+                swiper: [{
+                    id: 1,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 2,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 3,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }, {
+                    id: 4,
+                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+                }],
+
+            }
+        },
+        methods: {
+        },
+        mounted() {
+        },
+    })
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 4,
+        slidesPerColumn: 2,
+        spaceBetween: 5,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true
+        },
+    });
+</script>
+
+</html>

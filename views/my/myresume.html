@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的简历</title>
+    <link rel="stylesheet" href="../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-header {
+            background-color: red;
+            color: white;
+            font-size: 16px;
+        }
+
+        .mint-search {
+            height: 52px
+        }
+
+        .el-button--primary {
+            color: black;
+            background-color: white;
+            border-color: white;
+            border-radius: 0px;
+        }
+
+        .el-button {
+            padding: 10px 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 头部返回等 -->
+        <mt-header title="简历搜索">
+            <a slot="left" href="../my.html">
+                <mt-button icon="back"></mt-button>
+            </a>
+            <mt-button icon="more" slot="right"></mt-button>
+        </mt-header>
+        <!-- 搜索 -->
+        <mt-search v-model="search" cancel-text="取消" placeholder="搜索">
+        </mt-search>
+        <!-- 功能区 -->
+        <div style="display: flex;width: 100%;">
+            <div style="width:25%;">
+                <el-dropdown>
+                    <el-button type="primary">
+                        更新时间<i class="el-icon-caret-bottom el-icon--right"></i>
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            <div style="width:25%;">
+                <el-dropdown>
+                    <el-button type="primary">
+                        区域<i class="el-icon-caret-bottom el-icon--right"></i>
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            <div style="width:25%;">
+                <el-dropdown>
+                    <el-button type="primary">
+                        职位<i class="el-icon-caret-bottom el-icon--right"></i>
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+            <div style="width:25%;">
+                <el-dropdown>
+                    <el-button type="primary">
+                        更多<i class="el-icon-caret-bottom el-icon--right"></i>
+                    </el-button>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>黄金糕</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
+            </div>
+
+        </div>
+
+
+        <!-- 我的简历模板 -->
+        <div style="border-top: 0.5rem #d9d9d9 solid;padding: 0.5rem 0;">
+            <!-- 名字信息等 -->
+            <div style="margin-left: 0.5rem;">
+                <div><span style="font-size: 1.2rem;"> <strong> 名字获取</strong></span></div>
+                <div style="margin: 0.2rem 0;">女/男|多少岁|学历|工作经验
+                    <span style="float: right;margin-right: 1rem;">重庆市开州区</span>
+                </div>
+                <div>
+                    意向职位:获取
+                    <span style="float: right;margin-right: 1rem;">昨天</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            search: '',
+        },
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>
