@@ -22,6 +22,25 @@
             background-color: #f6f6f6;
             color: black;
         }
+
+        .mint-button--default {
+            background-color: #F9F2EA;
+            border: 1px #ae8359 solid;
+            color: black;
+        }
+
+        .mint-button {
+            height: 56px;
+        }
+
+        .mint-button-text {
+            font-size: 17px;
+        }
+
+        .mint-badge.is-size-normal {
+            border-radius: 5px;
+            font-size: 12px;
+        }
     </style>
 </head>
 
@@ -41,40 +60,67 @@
         <div style="display: block;margin: 0 1rem;box-shadow: 1px 3px 2px red;">
             <div
                 style="display: flex;align-items: center;border-bottom: 0.2rem #ae8359 solid;padding: 0.5rem 1rem;width: 40%;margin-left: 1rem;">
-                <img src="../../images/VIP.svg" style="width: 20px; height: 20px;margin-right: 0.5rem;">
+                <img src="../../images/my/VIP/VIP.svg" style="width: 20px; height: 20px;margin-right: 0.5rem;">
                 VIP会员卡权益
             </div>
             <div style="border:0.1px grey dashed"></div>
             <div style="height: 200px;">
                 <div style="text-align: center;width: 33%;float: left;margin: 0.5rem 0 0.3rem 0;">
-                    <img src="../../images/VIP.svg" style="height: 3rem; width: 3rem;">
+                    <img src="../../images/my/VIP/VIP.svg" style="height: 3rem; width: 3rem;">
                     <div style="font-size: 11px;">省钱</div>
                     <div>免费上门</div>
                 </div>
                 <div style="text-align: center;width: 33%;float: left;margin: 0.5rem 0 0.3rem 0;">
-                    <img src="../../images/VIP.svg" style="height: 3rem; width: 3rem;">
+                    <img src="../../images/my/VIP/VIP.svg" style="height: 3rem; width: 3rem;">
                     <div style="font-size: 11px;">省钱</div>
                     <div>免费上门</div>
                 </div>
                 <div style="text-align: center;width: 33%;float: left;margin: 0.5rem 0 0.3rem 0;">
-                    <img src="../../images/VIP.svg" style="height: 3rem; width: 3rem;">
+                    <img src="../../images/my/VIP/VIP.svg" style="height: 3rem; width: 3rem;">
                     <div style="font-size: 11px;">省钱</div>
                     <div>免费上门</div>
                 </div>
                 <div style="text-align: center;width: 33%;float: left;margin: 0.5rem 0 0.3rem 0;">
-                    <img src="../../images/VIP.svg" style="height: 3rem; width: 3rem;">
+                    <img src="../../images/my/VIP/VIP.svg" style="height: 3rem; width: 3rem;">
                     <div style="font-size: 11px;">省钱</div>
                     <div>免费上门</div>
                 </div>
                 <div style="text-align: center;width: 33%;float: left;margin: 0.5rem 0 0.3rem 0;">
-                    <img src="../../images/VIP.svg" style="height: 3rem; width: 3rem;">
+                    <img src="../../images/my/VIP/VIP.svg" style="height: 3rem; width: 3rem;">
                     <div style="font-size: 11px;">省钱</div>
                     <div>免费上门</div>
                 </div>
             </div>
         </div>
+        <!-- 购买会员卡 -->
+        <div style="margin-top: 2rem;">
+            <!-- 题目 -->
+            <div style="display: flex;align-items: center;margin-left: 1rem;">
+                <img src="../../images/my/VIP/buyvip.svg" style="width: 2rem;height: 2rem;">
+                <strong style="margin-left: 0.5rem;">购买VIP会员卡</strong>
+            </div>
+            <!-- 价格等 -->
+            <div style="margin:1rem;font-size: 12px;">
+                <mt-button disabled style="width: 100%;">
+                    <strong>
+                        <span style="float: left;">
+                            VIP年卡
+                        </span>
+                        <span style="float: right;">原价<span style="text-decoration: line-through;">多少钱</span></span>
+                        <span style="float: right;margin-left: 0.5rem;">
+                            <mt-badge type="error" style="float: right;">特惠</mt-badge> ￥多少钱
+                        </span>
+                    </strong>
+                </mt-button>
+            </div>
+            <div style="margin:0.5rem 1rem">
+                <i class="el-icon-warning" style="color: #C49264;"></i> 这里是文字描述
+            </div>
+            <mt-button
+                style="width: 70%;margin:3% 15%;height: 40px;border-radius: 30px;color: white;font-size: 20px;background-image: linear-gradient(to right, #F0C092 , #C49264);border: none;">
+                购买会员卡</mt-button>
+        </div>
     </div>
-
 </body>
 
 <!-- import Vue before Mint UI -->
