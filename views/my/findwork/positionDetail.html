@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>职位详情</title>
+    <link rel="stylesheet" href="../../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-button {
+            font-size: 14px;
+            height: 25px;
+            background-color: #EDEDED;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div style="border-bottom: 0.5rem #eeeeee solid;padding: 1rem ;">
+            <div style="margin-bottom:0.7rem ">
+                <span style="font-size: 16px;">职位详情</span>
+                <span style="float: right;margin-right: 1rem;">工资详情</span>
+            </div>
+            <span>公司等</span>
+            <div style="margin:0.7rem 0">
+                <mt-button disabled>六险一金</mt-button>
+                <mt-button disabled>餐补</mt-button>
+                <mt-button disabled>带薪年假</mt-button>
+            </div>
+            <div>
+                <i class="el-icon-location" style="color:blue ;"></i>
+                这边跟的是公司地址等
+            </div>
+        </div>
+        <!-- 职位详情工作职责等 -->
+        <div style="border-bottom: 0.5rem #eeeeee solid;padding: 0 1rem 1rem 1rem">
+            <div>
+                <h3>职位详情</h3>
+                <div>工作职责：</div>
+                <div>排号递增、内容获取</div>
+            </div>
+            <!-- 任职要求 -->
+            <div style="margin-top: 1.5rem;">
+                <div>任职要求：</div>
+                <div>排号递增、内容获取</div>
+                <div>排号递增、内容获取</div>
+            </div>
+        </div>
+        <!-- 公司信息等 -->
+        <div style="padding: 0 1rem;">
+            <h3>公司信息</h3>
+            <span style="font-size: 1.17rem;"> <strong>公司名字</strong> </span>
+            <div>获取公司介绍</div>
+        </div>
+
+        <mt-button
+            style="position: fixed;bottom: 0;width: 100%;background-color: #F5AE04;color: white;height: 40px;border-radius: 0;">
+            投递简历</mt-button>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        //方法
+        methods: {},
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

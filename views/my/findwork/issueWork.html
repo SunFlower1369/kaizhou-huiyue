@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布工作</title>
+    <link rel="stylesheet" href="../../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div style="height: 2%;width: 100%;">
+            <mt-header title="发布招聘信息">
+                <a slot="left" href="../../my.html">
+                    <mt-button icon="back"></mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <div>
+            <!-- 顶部提示 -->
+            <div>
+
+            </div>
+            <!-- 公告 -->
+            <div>
+
+            </div>
+        </div>
+        <!-- 填写内容 -->
+        <div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>招聘类型</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="zplx" style="height: 30px;width: 100%;border: none;" v-model="zplx"
+                        @change="zplxmethod">
+                        <option value="0">请选择</option>
+                        <option value="全职">全职</option>
+                        <option value="兼职">兼职</option>
+                        <option value="应届毕业生">应届毕业生</option>
+                    </select>
+                </div>
+
+            </div>
+            <mt-field label="职位名称" placeholder="请输入职位名称"></mt-field>
+            <div style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;">
+                <span>职位类型</span>
+                <div style="width: 70%;">
+                    <div style="margin-left: 2.6rem;">
+                        <mt-popup v-model="popupVisible" position="bottom" style="width: 100%;">
+                            <div class="page-picker-wrapper">
+                                <mt-picker :slots="kindSlots" @change="onAddressChange" :visible-item-count="5">
+                                </mt-picker>
+                            </div>
+                        </mt-popup>
+                        <p class="page-picker-desc" @click="pop">{{ kind }} / {{juti}}
+                            <i class="el-icon-caret-bottom" style="float: right;"></i>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>薪资待遇</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="xzdy" id="xzdy" style="height: 30px;width: 100%;border: none;" v-model="xzdy"
+                        @change="xzdymethod">
+                        <option value="0">请选择</option>
+                        <option value="1000-3000">1000-3000</option>
+                        <option value="3000-6000">3000-6000</option>
+                        <option value="6000+">6000+</option>
+                    </select>
+                </div>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>工作区域</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="xzdy" id="xzdy" style="height: 30px;width: 100%;border: none;" v-model="xzdy"
+                        @change="xzdymethod">
+                        <option value="0">请选择</option>
+                        <option value="1000-3000">1000-3000</option>
+                        <option value="3000-6000">3000-6000</option>
+                        <option value="6000+">6000+</option>
+                    </select>
+                </div>
+            </div>
+            <mt-field label="招聘人数" placeholder="请输入招聘人数,留空默认为若干"></mt-field>
+        </div>
+
+        <!-- 职位福利 -->
+        <div>
+            <div style="display: flex;align-items: center;background-color: #eeeeee ;height: 2.5rem;">
+                <span style="margin-left: 0.6rem;">职位福利</span>
+            </div>
+            <div style="width: 100%;">
+                <mt-button plain style="width: 27%;margin: 0.2rem 0 0.2rem 3%;height: 25px;font-size: 16px;">反复
+                </mt-button>
+            </div>
+        </div>
+        <!-- 岗位要求 -->
+        <div>
+            <div style="display: flex;align-items: center;background-color: #eeeeee ;height: 2.5rem;">
+                <span style="margin-left: 0.6rem;">岗位要求</span>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>性别要求</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="sex" id="sex" style="height: 30px;width: 100%;border: none;" v-model="sex">
+                        <option value="男" selected>男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>年龄要求</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="age" id="sex" style="height: 30px;width: 100%;border: none;" v-model="age">
+                        <option value="男" selected>男</option>
+                        <option value="女">女</option>
+                    </select>
+                </div>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>学历要求</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="school" id="sex" style="height: 30px;width: 100%;border: none;" v-model="school">
+                        <option value="小学" selected>小学</option>
+                        <option value="初中">初中</option>
+                        <option value="高中">高中</option>
+                        <option value="专科">专科</option>
+                        <option value="本科">本科</option>
+                        <option value="硕士">硕士</option>
+                    </select>
+                </div>
+            </div>
+            <div
+                style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;border-top: 1px #d9d9d9 solid;">
+                <span>工作经验</span>
+                <div style="margin-left: 2.5rem;width: 60%;">
+                    <select name="worktime" id="sex" style="height: 30px;width: 100%;border: none;" v-model="worktime">
+                        <option value="小学" selected>小学</option>
+                        <option value="初中">初中</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div style="display: flex;align-items: center;background-color: #eeeeee ;height: 2.5rem;">
+                <span style="margin-left: 0.6rem;">职位要求</span>
+            </div>
+            <mt-field placeholder="请输入职位要求，让求职者快速了解岗位" type="textarea" rows="4"></mt-field>
+        </div>
+        <mt-button style=" position: fixed; bottom: 0px;width: 100%;background-color: red;color: white;height: 40px;border-radius: 0;">
+            点击发布</mt-button>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    const kind = {
+        '餐饮美食': ['早餐早点', '饭店餐厅', '快餐外卖', '烧烤麻辣', '夜宵天地', '火锅香辣', '茶餐西餐', '甜品饮料', '零食水果'],
+        '休闲娱乐': ['美容美发', '游戏电玩 ', '文体户外', '汗蒸养生', '网吧网咖', '游泳馆', '健身房', '按摩推拿', '足浴洗浴', '咖啡厅', 'KTV', '酒吧', '电影院', '茶馆'],
+        '酒店旅游': ['星级酒店', '旅游包年', '商务宾馆', '旅行社', '旅游景点', '农家乐', '度假村'],
+        '购物天地': ['文具办公', '美容护肤', '数码科技', '保健养生', '服装鞋包', '眼镜饰品', '家用电器', '手机专卖', '户外运动', '名茶烟酒', '珍宝钟表', '鲜花礼品', '商行超市', '生鲜特产', '生鲜水产', '海鲜水产'],
+        '生活服务': ['的士/代驾', '家政服务', '送水站', '宠物服务', '开锁修锁', '管道疏通', '家电维修', '二手回收', '衣服洗护', '搬家服务', '快递服务', '物流服务', '货物运输', '其他服务'],
+        '汽车服务': ['摩托车/电动车', '4S店', '汽车美容', '维修保养', '驾校教练', '汽配销售', '车险信贷', '汽车销售', '汽车租聘', '共享汽车'],
+    };
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            xzdy: '0',
+            popupVisible: false,
+            zplx: '0',
+            sex: '男',
+            age: '',
+            school: '',
+            worktime: '',
+            kindSlots: [
+                {
+                    flex: 1,
+                    values: Object.keys(kind),
+                    className: 'slot1',
+                    textAlign: 'center'
+                }, {
+                    divider: true,
+                    content: '-',
+                    className: 'slot2'
+                }, {
+                    flex: 1,
+                    values: ['早餐早点'],
+                    className: 'slot3',
+                    textAlign: 'center'
+                }
+            ],
+            kind: '餐饮美食',
+            juti: '早餐早点'
+        },
+        //方法
+        methods: {
+            pop() {
+                this.popupVisible = true
+            },
+            lxChange(picker, values) {
+                this.zplx = values[0];
+            },
+            xzdymethod() {
+                console.log(this.xzdy)
+            },
+            zplxmethod() {
+                console.log(this.zplx)
+            },
+            onAddressChange(picker, values) {
+                picker.setSlotValues(1, kind[values[0]]);
+                this.kind = values[0];
+                this.juti = values[1];
+            },
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

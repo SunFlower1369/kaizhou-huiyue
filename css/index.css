@@ -51,11 +51,6 @@ a {
     float: right;
 }
 
-.detail-img {
-    height: 12vh;
-    margin-left: 2%;
-}
-
 .detail-des {
     margin-left: 1%;
     font-size: 18px;
@@ -65,11 +60,13 @@ a {
     display: flex;
     float: left;
     width: 22%;
+    height: 80%;
     margin: 1%;
 }
 
 .date-detail {
     margin-left: 2%;
+    margin-top: 1rem;
 }
 
 .map-detail {

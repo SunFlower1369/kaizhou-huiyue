@@ -142,9 +142,9 @@
             <div>
                 <el-tabs v-model="activeName">
                     <el-tab-pane label="门店照片" name="1">
-                        <div style="display: flex;margin-left: 5%;">
-                            <div v-for="item in shopImg" :key="item.id">
-                                <img :src="item.img" style="width: 90%;">
+                        <div style="margin-left: 5%;">
+                            <div v-for="item in shopImg" :key="item.id" style="float: left;margin-left: 1%;width: 23%;">
+                                <el-image :preview-src-list="img" :src="item.img" style="width: 100%;">
                             </div>
                         </div>
                     </el-tab-pane>
@@ -196,7 +196,25 @@
             }, {
                 id: 4,
                 img: "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg"
-            }]
+            }, {
+                id: 5,
+                img: "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg"
+            }, {
+                id: 6,
+                img: "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg"
+            }, {
+                id: 7,
+                img: "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg"
+            }],
+            img: [
+                "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg",
+                "../../images/1.jpg",
+                "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg",
+                "../../images/1.jpg",
+                "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg",
+                "../../images/1.jpg",
+                "https://ns-strategy.cdn.bcebos.com/ns-strategy/upload/fc_big_pic/part-00382-1637.jpg"
+            ]
         },
         //方法
         methods: {},

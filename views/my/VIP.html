@@ -5,14 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src='https://cdn.jsdelivr.net/npm/vue/dist/vue.js'></script>
-    <script src='https://unpkg.com/axios/dist/axios.min.js'></script>
-    <script src='https://unpkg.com/mint-ui@1/lib/index.js'></script>
-    <link rel='stylesheet' href='https://unpkg.com/mint-ui@1/lib/style.css'>
+    <title>会员中心</title>
+    <link rel="stylesheet" href="../../js/mintui/style.css">
     <!-- 引入样式 -->
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <style>
+        [v-cloak] {
+            display: none;
+        }
+
         body {
             padding: 0;
             margin: 0;
@@ -45,7 +46,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <mt-header title="开通VIP会员卡">
             <a slot="left" href="">
                 <mt-button icon="back"></mt-button>
@@ -123,14 +124,16 @@
     </div>
 </body>
 
-<!-- import Vue before Mint UI -->
-<script src='https://unpkg.com/vue/dist/vue.js'></script>
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
 <!-- import JavaScript -->
-<script src='https://unpkg.com/mint-ui/lib/index.js'></script>
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
 <!-- 引入组件库 -->
-<script src='https://unpkg.com/element-ui/lib/index.js'></script>
-<!-- 引入vue router -->
-<script src='https://unpkg.com/vue-router/dist/vue-router.js'></script>
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
 <script>
     //创建Vue实例,得到 ViewModel
     var vm = new Vue({

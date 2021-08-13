@@ -30,21 +30,18 @@
     <div id="app" v-cloak>
         <mt-field label="店铺名称" placeholder="必填，输入门店的门店名"></mt-field>
         <div style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;">
-
             <span>店铺类型</span>
             <div style="display: block;flex: 1;padding-right: 1rem;">
                 <div style="margin-left: 2.5rem;">
                     <mt-popup v-model="popupVisible" position="bottom" style="width: 100%;">
                         <div class="page-picker-wrapper">
-                            <mt-picker :slots="kindSlots" @change="onAddressChange" :visible-item-count="5"></mt-picker>
+                            <mt-picker :slots="kindSlots" @change="onAddressChange" :visible-item-count="5" :showToolbar="true"></mt-picker>
                         </div>
                     </mt-popup>
                     <p class="page-picker-desc" @click="pop">{{ kind }} / {{juti}} <i class="el-icon-caret-bottom"></i>
                     </p>
                 </div>
-
             </div>
-
         </div>
 
         <mt-field label="联系人" placeholder="必填，输入门店联系人" type="text"></mt-field>

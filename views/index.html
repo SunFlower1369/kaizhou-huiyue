@@ -94,35 +94,6 @@
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
         </div>
-        <!-- <div>
-
-             <mt-swipe :auto="4000">
-                <mt-swipe-item>
-                    <div style="display: block;float: left;">
-                        <div>1</div>
-                        <div>1</div>
-                        <div>1</div>
-                        <div>1</div>
-                    </div>
-                    <div>
-                        <div>1</div>
-                        <div>1</div>
-                        <div>1</div>
-                        <div>1</div>
-                    </div>
-                </mt-swipe-item>
-                <mt-swipe-item>
-                    <div>
-                        <div>1</div>
-                        <div>1</div>
-                    </div>
-                    <div>
-                        <div>1</div>
-                        <div>1</div>
-                    </div>
-                </mt-swipe-item>
-            </mt-swipe> 
-        </div> -->
         <!-- 发布和入驻 -->
         <div style="display: flex;">
             <img src="../images/index/issue.png" style="width: 45vw;margin: 1vh 0 1vh 3vw;">
@@ -153,38 +124,42 @@
                                 <div id="shop-name" class="active-head">
                                     <div class="left" style="width: 70%;">
                                         <div class="block">
-                                            <el-avatar :size="50"
-                                                src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993">
+                                            <el-avatar :size="50" :src="item.u_avatarurl">
                                             </el-avatar>
                                         </div>
                                         <div class="name-class">
-                                            <span>{{item.name}}</span>
+                                            <span>{{item.u_nickname}}</span>
                                         </div>
-                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">{{ item.tag
-                                            }}
+                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">
+                                            {{ item.tname }}
                                         </el-tag>
                                     </div>
-
                                     <mt-button type="danger" size="small">拨打电话</mt-button>
                                 </div>
                                 <!--发布信息图片等-->
-                                <div class="detail-img" @click="lookDetail(item.id)">
-                                    <div>
-                                        <span class="detail-des">123456</span>
+                                
+                                <div @click="lookDetail(item.id)" style="margin-left: 2%;">
+                                    <div style="width: 100%">
+                                        <span class="detail-des">{{item.content}}</span>
                                     </div>
-                                    <div v-for="img in detail" :key="img.id">
-                                        <img :src="img.detail_img" class="img-class" />
+                                    <div style="display: flex;width: 100%;">
+                                        <div v-for="img in item.imgs_lists" :key="img.id" style="width: 23%;margin-left: 2%;"
+                                        v-show="img === null ? false : true">
+                                            <img :src="img" class="img-class" style="height: 80px;width: 100%;" />
+                                        </div>
                                     </div>
                                 </div>
 
+
+
                                 <!--时间等-->
                                 <div id="date-detail" class="date-detail">
-                                    <el-row style="margin:0 0 1rem 0">
+                                    <el-row style="margin: 1rem 0">
                                         <i class="el-icon-location-outline" style="color:red"></i>
-                                        这里是地址
+                                        {{item.loc_address }}
                                     </el-row>
                                     <div class="time-detail">
-                                        <span class="issue-date-class">这里是日期几点发布的</span>
+                                        <span class="issue-date-class">{{item.crtime}}</span>
                                         <span class="look-class issue-date-class">
                                             查看详情
                                             <i class="el-icon-d-arrow-right"></i>
@@ -194,7 +169,7 @@
                                         <div class="one0"></div>
                                         <i class="el-icon-view"></i>
                                         <span class="see">
-                                            <span style="color:blue">**</span>人浏览
+                                            <span style="color:blue">{{ item.look_cnt }}</span>人浏览
                                         </span>
                                     </div>
                                 </div>
@@ -203,20 +178,198 @@
                         </li>
                     </mt-loadmore>
                 </ul>
-
             </mt-tab-container-item>
             <!-- 家居建材 -->
             <mt-tab-container-item id="2">
+                <ul>
+                    <!-- 上拉加载 -->
+                    <mt-loadmore :bottom-method="loadBottom1" :bottom-all-loaded="allLoaded1" ref="loadmore1">
+                        <li style="margin-bottom: 2rem;">
+                            <div v-for="item in actives" :key="item.id" class="activemo-class">
+                                <!--头部头像等-->
+                                <div id="shop-name" class="active-head">
+                                    <div class="left" style="width: 70%;">
+                                        <div class="block">
+                                            <el-avatar :size="50" :src="item.u_avatarurl">
+                                            </el-avatar>
+                                        </div>
+                                        <div class="name-class">
+                                            <span>{{item.u_nickname}}</span>
+                                        </div>
+                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">
+                                            {{ item.tname }}
+                                        </el-tag>
+                                    </div>
+                                    <mt-button type="danger" size="small">拨打电话</mt-button>
+                                </div>
+                                <!--发布信息图片等-->
+                                <div>
+                                    <div class="detail-img" @click="lookDetail(item.id)"
+                                        style="width: 100%;height: 20vh;">
+                                        <div>
+                                            <span class="detail-des">{{item.content}}</span>
+                                        </div>
+                                        <div v-for="img in item.imgs_lists" :key="img.id">
+                                            <img :src="img" class="img-class" />
+                                        </div>
+                                    </div>
+                                </div>
 
+
+                                <!--时间等-->
+                                <div id="date-detail" class="date-detail">
+                                    <el-row style="margin:0 0 1rem 0">
+                                        <i class="el-icon-location-outline" style="color:red"></i>
+                                        {{item.loc_address }}
+                                    </el-row>
+                                    <div class="time-detail">
+                                        <span class="issue-date-class">{{item.crtime}}</span>
+                                        <span class="look-class issue-date-class">
+                                            查看详情
+                                            <i class="el-icon-d-arrow-right"></i>
+                                        </span>
+                                    </div>​​​​​​​
+                                    <div class="one">
+                                        <div class="one0"></div>
+                                        <i class="el-icon-view"></i>
+                                        <span class="see">
+                                            <span style="color:blue">{{ item.look_cnt }}</span>人浏览
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="userinfo-header-line-under"></div>
+                            </div>
+                        </li>
+                    </mt-loadmore>
+                </ul>
             </mt-tab-container-item>
-            <div class="userinfo-header-line-under"></div>
             <!-- 餐饮美食 -->
             <mt-tab-container-item id="3">
-                <mt-cell v-for="n in 30" :title="'content ' + n" />
+                <ul>
+                    <!-- 上拉加载 -->
+                    <mt-loadmore :bottom-method="loadBottom1" :bottom-all-loaded="allLoaded1" ref="loadmore1">
+                        <li style="margin-bottom: 2rem;">
+                            <div v-for="item in actives" :key="item.id" class="activemo-class">
+                                <!--头部头像等-->
+                                <div id="shop-name" class="active-head">
+                                    <div class="left" style="width: 70%;">
+                                        <div class="block">
+                                            <el-avatar :size="50" :src="item.u_avatarurl">
+                                            </el-avatar>
+                                        </div>
+                                        <div class="name-class">
+                                            <span>{{item.u_nickname}}</span>
+                                        </div>
+                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">
+                                            {{ item.tname }}
+                                        </el-tag>
+                                    </div>
+                                    <mt-button type="danger" size="small">拨打电话</mt-button>
+                                </div>
+                                <!--发布信息图片等-->
+                                <div>
+                                    <div class="detail-img" @click="lookDetail(item.id)"
+                                        style="width: 100%;height: 20vh;">
+                                        <div>
+                                            <span class="detail-des">{{item.content}}</span>
+                                        </div>
+                                        <div v-for="img in item.imgs_lists" :key="img.id">
+                                            <img :src="img" class="img-class" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--时间等-->
+                                <div id="date-detail" class="date-detail">
+                                    <el-row style="margin:0 0 1rem 0">
+                                        <i class="el-icon-location-outline" style="color:red"></i>
+                                        {{item.loc_address }}
+                                    </el-row>
+                                    <div class="time-detail">
+                                        <span class="issue-date-class">{{item.crtime}}</span>
+                                        <span class="look-class issue-date-class">
+                                            查看详情
+                                            <i class="el-icon-d-arrow-right"></i>
+                                        </span>
+                                    </div>​​​​​​​
+                                    <div class="one">
+                                        <div class="one0"></div>
+                                        <i class="el-icon-view"></i>
+                                        <span class="see">
+                                            <span style="color:blue">{{ item.look_cnt }}</span>人浏览
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="userinfo-header-line-under"></div>
+                            </div>
+                        </li>
+                    </mt-loadmore>
+                </ul>
             </mt-tab-container-item>
             <!-- 休闲娱乐 -->
             <mt-tab-container-item id="4">
-                <mt-cell v-for="n in 30" :title="'content ' + n" />
+                <ul>
+                    <!-- 上拉加载 -->
+                    <mt-loadmore :bottom-method="loadBottom1" :bottom-all-loaded="allLoaded1" ref="loadmore1">
+                        <li style="margin-bottom: 2rem;">
+                            <div v-for="item in actives" :key="item.id" class="activemo-class">
+                                <!--头部头像等-->
+                                <div id="shop-name" class="active-head">
+                                    <div class="left" style="width: 70%;">
+                                        <div class="block">
+                                            <el-avatar :size="50" :src="item.u_avatarurl">
+                                            </el-avatar>
+                                        </div>
+                                        <div class="name-class">
+                                            <span>{{item.u_nickname}}</span>
+                                        </div>
+                                        <el-tag type="success" effect="dark" class="tag-class" size="small ">
+                                            {{ item.tname }}
+                                        </el-tag>
+                                    </div>
+                                    <mt-button type="danger" size="small">拨打电话</mt-button>
+                                </div>
+                                <!--发布信息图片等-->
+                                <div>
+                                    <div class="detail-img" @click="lookDetail(item.id)"
+                                        style="width: 100%;height: 20vh;">
+                                        <div>
+                                            <span class="detail-des">{{item.content}}</span>
+                                        </div>
+                                        <div v-for="img in item.imgs_lists" :key="img.id">
+                                            <img :src="img" class="img-class" />
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!--时间等-->
+                                <div id="date-detail" class="date-detail">
+                                    <el-row style="margin:0 0 1rem 0">
+                                        <i class="el-icon-location-outline" style="color:red"></i>
+                                        {{item.loc_address }}
+                                    </el-row>
+                                    <div class="time-detail">
+                                        <span class="issue-date-class">{{item.crtime}}</span>
+                                        <span class="look-class issue-date-class">
+                                            查看详情
+                                            <i class="el-icon-d-arrow-right"></i>
+                                        </span>
+                                    </div>​​​​​​​
+                                    <div class="one">
+                                        <div class="one0"></div>
+                                        <i class="el-icon-view"></i>
+                                        <span class="see">
+                                            <span style="color:blue">{{ item.look_cnt }}</span>人浏览
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="userinfo-header-line-under"></div>
+                            </div>
+                        </li>
+                    </mt-loadmore>
+                </ul>
             </mt-tab-container-item>
         </mt-tab-container>
         <!-- <div> -->
@@ -256,11 +409,13 @@
 <script src="../js/elementui/index.js"></script>
 <!-- Swiper JS -->
 <script src="../js/swiper-bundle.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
 <script>
     new Vue({
         el: '#app',
         data() {
-            
+
             return {
                 list: [1, 2, 3, 4],
                 loading: false,
@@ -280,22 +435,7 @@
                     id: 4,
                     img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
                 }],
-                actives: [
-                    {
-                        id: 1,
-                        avatar: "",
-                        name: "1",
-                        tag: "教育培训",
-                        title: "1345679",
-                    },
-                    {
-                        id: 2,
-                        avatar: "",
-                        name: "1",
-                        tag: "教育培训",
-                        title: "1345679",
-                    }
-                ],
+                actives: [],
                 detail: [{
                     id: "10",
                     detail_img:
@@ -349,7 +489,6 @@
                     img: "../images/shop.png"
                 },]
                 ,
-
             }
         },
         methods: {
@@ -357,30 +496,19 @@
                 console.log(id)
                 window.location.href = "./index/detail.html";
             },
-            loadBottom1() {// load more data
-                //this.allLoaded = true;// if all data are loaded
-
+            loadBottom1() {
+                //未定义ID 
                 var maxId = this.actives[this.actives.length - 1].id
                 this.actives.push(
-                    {
-                        id: maxId + 1,
-                        avatar: "",
-                        name: maxId + 1,
-                        tag: "教育培训",
-                        title: "1345679",
-                    },
-                    {
-                        id: maxId + 2,
-                        avatar: "",
-                        name: maxId + 2,
-                        tag: "教育培训",
-                        title: "1345679",
-                    })
+                )
                 this.$refs.loadmore1.onBottomLoaded();
             }
         },
-        mounted() {
-
+        created() {
+            axios.get('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&do=tc_msg_action&op=msg_list&page=1&pagesize=10&m_type=0').then(res => {
+                console.log(res.data.data)
+                this.actives = res.data.data
+            })
         },
     })
     var swiper = new Swiper('.swiper-container', {

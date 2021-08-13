@@ -10,6 +10,10 @@
     <!-- 引入样式 -->
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <style>
+        [v-cloak] {
+            display: none;
+        }
+
         body {
             padding: 0;
             margin: 0;
@@ -33,7 +37,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <!-- 头部返回等 -->
         <mt-header title="我的订单">
             <a href="../my.html" slot="left">

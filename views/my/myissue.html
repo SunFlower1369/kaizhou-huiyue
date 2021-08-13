@@ -11,6 +11,10 @@
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <link rel="stylesheet" href="../../css/myissue.css">
     <style>
+        [v-cloak] {
+            display: none;
+        }
+
         body {
             padding: 0;
             margin: 0;
@@ -32,7 +36,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="app" v-cloak>
         <ul>
             <li style="margin-bottom: 2rem;">
                 <div v-for="item in actives" :key="item.id" class="activemo-class" style="margin-top: 1rem;">
