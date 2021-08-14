@@ -57,7 +57,7 @@
 </head>
 
 <body>
-    <div id="app" class="app" v-cloak>
+    <div id="index" class="app" v-cloak>
         <!-- 底部导航栏tab-container -->
         <!-- <mt-tab-container v-model="tabbar">
             <mt-tab-container-item id="1"> -->
@@ -115,10 +115,11 @@
         <mt-tab-container v-model="selected">
             <!-- 热门推荐 -->
             <mt-tab-container-item id="1">
-                <ul>
+                <ul style="margin-bottom: 2rem;">
                     <!-- 上拉加载 -->
                     <mt-loadmore :bottom-method="loadBottom1" :bottom-all-loaded="allLoaded1" ref="loadmore1">
-                        <li style="margin-bottom: 2rem;">
+                        <li>
+                            
                             <div v-for="item in actives" :key="item.id" class="activemo-class">
                                 <!--头部头像等-->
                                 <div id="shop-name" class="active-head">
@@ -134,17 +135,17 @@
                                             {{ item.tname }}
                                         </el-tag>
                                     </div>
-                                    <mt-button type="danger" size="small">拨打电话</mt-button>
+                                    <mt-button type="danger" size="small" >拨打电话</mt-button>
                                 </div>
                                 <!--发布信息图片等-->
-                                
+
                                 <div @click="lookDetail(item.id)" style="margin-left: 2%;">
                                     <div style="width: 100%">
                                         <span class="detail-des">{{item.content}}</span>
                                     </div>
                                     <div style="display: flex;width: 100%;">
-                                        <div v-for="img in item.imgs_lists" :key="img.id" style="width: 23%;margin-left: 2%;"
-                                        v-show="img === null ? false : true">
+                                        <div v-for="img in item.imgs_lists" :key="img.id"
+                                            style="width: 23%;margin-left: 2%;">
                                             <img :src="img" class="img-class" style="height: 80px;width: 100%;" />
                                         </div>
                                     </div>
@@ -409,117 +410,8 @@
 <script src="../js/elementui/index.js"></script>
 <!-- Swiper JS -->
 <script src="../js/swiper-bundle.min.js"></script>
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="../js/axios/axios.js"></script>
+<script src="../views/api/api.js"></script>
 
-<script>
-    new Vue({
-        el: '#app',
-        data() {
-
-            return {
-                list: [1, 2, 3, 4],
-                loading: false,
-                selected: "1",
-                tabbar: "首页",
-                allLoaded1: false,
-                swiper: [{
-                    id: 1,
-                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
-                }, {
-                    id: 2,
-                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
-                }, {
-                    id: 3,
-                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
-                }, {
-                    id: 4,
-                    img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
-                }],
-                actives: [],
-                detail: [{
-                    id: "10",
-                    detail_img:
-                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
-                },
-                {
-                    id: "2",
-                    detail_img:
-                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
-                },
-                {
-                    id: "3",
-                    detail_img:
-                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
-                },
-                {
-                    id: "4",
-                    detail_img:
-                        "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimage.biaobaiju.com%2Fuploads%2F20181113%2F22%2F1542119277-CrgIlUnFJk.jpg&refer=http%3A%2F%2Fimage.biaobaiju.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629514598&t=c61dfe6b2a6c49464f7d024b97208993"
-                }
-                ]
-                , buttonImg: [{
-                    name: "家具建材",
-                    img: "../images/shop.png"
-                }, {
-                    name: "餐饮美食",
-                    img: "../images/shop.png"
-                }, {
-                    name: "休闲娱乐",
-                    img: "../images/shop.png"
-                }, {
-                    name: "购物天地",
-                    img: "../images/shop.png"
-                }, {
-                    name: "生活服务",
-                    img: "../images/shop.png"
-                }, {
-                    name: "汽车服务",
-                    img: "../images/shop.png"
-                }, {
-                    name: "母婴专区",
-                    img: "../images/shop.png"
-                }, {
-                    name: "教育培训",
-                    img: "../images/shop.png"
-                }, {
-                    name: "房产相关",
-                    img: "../images/shop.png"
-                }, {
-                    name: "婚庆摄影",
-                    img: "../images/shop.png"
-                },]
-                ,
-            }
-        },
-        methods: {
-            lookDetail(id) {
-                console.log(id)
-                window.location.href = "./index/detail.html";
-            },
-            loadBottom1() {
-                //未定义ID 
-                var maxId = this.actives[this.actives.length - 1].id
-                this.actives.push(
-                )
-                this.$refs.loadmore1.onBottomLoaded();
-            }
-        },
-        created() {
-            axios.get('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&do=tc_msg_action&op=msg_list&page=1&pagesize=10&m_type=0').then(res => {
-                console.log(res.data.data)
-                this.actives = res.data.data
-            })
-        },
-    })
-    var swiper = new Swiper('.swiper-container', {
-        slidesPerView: 5,
-        slidesPerColumn: 2,
-        spaceBetween: 5,
-        pagination: {
-            el: '.swiper-pagination',
-            clickable: true
-        },
-    });
-</script>
 
 </html>

@@ -48,7 +48,7 @@
                     style="margin-left: 1rem;border: none;">
             </el-row>
         </div>
-        <mt-button type="danger" style="position: absolute;bottom: 0;width: 90%; margin: 0 5%" @click="issueNow(item)">
+        <mt-button type="danger" style="position: absolute;bottom: 0;width: 90%; margin: 0 3%" @click="issueNow(item)">
             免费，立刻发布</mt-button>
 
     </div>
@@ -65,33 +65,51 @@
 <script src="../../js/elementui/index.js"></script>
 <!-- Swiper JS -->
 <script src="../../js/swiper-bundle.min.js"></script>
+<script src="../../js/axios/axios.js"></script>
+
 <script>
     //创建Vue实例,得到 ViewModel
     var vm = new Vue({
         el: '#app',
         data: {
             item: {
-                u_nickname: '',
+                u_openid: 'oW04e5NWqcNpRLkMfExJgTYVXBbA',
+                u_nickname: 'oW04e5NWqcNpRLkMfExJgTYVXBbA',
                 content: '',
                 gpsaddress: '',
                 tname: '',
                 phone: '',
             }
-
         },
         //方法
         methods: {
             issueNow(item) {
-                console.log(item)
+                //console.log(item)
+
+                this.get()
+                console.log(this.item)
+                var issue = this.item
+                console.log("请求提交")
+                axios.post('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&c=entry&do=tc_msg_action&op=msg_send', issue)
+                    .then(function (response) {
+                        console.log(response)
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+                // this.$http.post(('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&c=entry&do=tc_msg_action&op=msg_send'), data).then(
+                //     Response => {
+                //         console.log("我提交了")
+                //     }
+                // )
                 // window.location.href = '../my/myissue.html'
             },
-            get(){
-                var add = window.location.href.split("?")[1]
-                console.log(add)
+            get() {
+                //获取哪一个点进来的 
+                var add = window.location.search.split("?tname=")[1]
+                this.item.tname = decodeURI(add)
+                //console.log(this.tname)
             }
-        },
-        created() {
-           this.get()
         },
         //计算属性
         computed: {},

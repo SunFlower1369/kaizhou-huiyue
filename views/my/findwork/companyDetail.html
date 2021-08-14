@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布工作</title>
+    <link rel="stylesheet" href="../../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-button {
+            height: 25px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <mt-header :title="selected">
+            <a href="" slot="left">
+                <mt-button icon="back" ></mt-button>
+            </a>
+            <mt-button icon="more" slot="right"></mt-button>
+        </mt-header>
+        <mt-navbar v-model="selected" style="margin-bottom: 0.2rem;">
+            <mt-tab-item id="公司简介">公司简介</mt-tab-item>
+            <mt-tab-item id="招聘职位">招聘职位</mt-tab-item>
+            <mt-tab-item id="公司环境">公司环境</mt-tab-item>
+            <mt-tab-item id="留言评论">留言评论</mt-tab-item>
+        </mt-navbar>
+
+        <!-- tab-container -->
+        <mt-tab-container v-model="selected">
+            <mt-tab-container-item id="公司简介">
+                <div>
+                    <div style="border-top: 0.5rem #eeeeee solid;padding: 0.5rem ;">
+                        <div>
+                            <span style="font-size: 20px;color: red;">天越</span>
+                            <mt-badge type="success" style="border-radius: 0;float: right;">分享</mt-badge>
+                        </div>
+                        <div style="margin: 0.2rem 0;">行业：后端获取</div>
+                        <div style="margin: 0.2rem 0;">性质：后端获取</div>
+                        <div style="margin: 0.2rem 0;">规模：后端获取</div>
+                        <div style="margin: 0.2rem 0;">地区：后端获取</div>
+                    </div>
+                    <div style="border-top: 0.5rem #eeeeee solid;padding: 0.5rem ;">
+                        <div>
+                            <mt-button plain style="margin-bottom: 0.3rem;">遍历获取</mt-button>
+                            <mt-button plain style="margin-bottom: 0.3rem;">遍历获取</mt-button>
+                            <mt-button plain style="margin-bottom: 0.3rem;">遍历获取</mt-button>
+                            <mt-button plain style="margin-bottom: 0.3rem;">遍历获取</mt-button>
+                            <mt-button plain style="margin-bottom: 0.3rem;">遍历获取</mt-button>
+                        </div>
+                    </div>
+                    <div style="border-top: 0.5rem #eeeeee solid; ;">
+                        <div style="border-bottom: 1px #eeeeee solid;padding: 0.5rem;">
+                            <span style="font-size: 18px;">公司简介</span>
+                        </div>
+                        <div style="padding: 0.5rem;">
+                            这里是简介
+                        </div>
+                    </div>
+                    <div style="border-top: 0.5rem #eeeeee solid; ;">
+                        <div style="border-bottom: 1px #eeeeee solid;padding: 0.5rem;">
+                            <span style="font-size: 18px;">联系方式</span>
+                        </div>
+                        <div style="padding: 0.5rem;">
+                            后端获取到的联系方式
+                        </div>
+                    </div>
+
+                </div>
+            </mt-tab-container-item>
+            <!-- 招聘职位 -->
+            <mt-tab-container-item id="招聘职位">
+                <div style="border-top: 0.5rem #eeeeee solid;">
+                    <!-- <div style="padding: 0.8rem;border-bottom: 1px #eeeeee solid;" >
+                        <span>后端获取职位后期循环处理</span>
+                        <i class="el-icon-arrow-right" style="float: right;"></i>
+                    </div> -->
+                    <mt-cell title="后期获取循环" to="" is-link> </mt-cell>
+                </div>
+            </mt-tab-container-item>
+            <mt-tab-container-item id="公司环境">
+                <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            </mt-tab-container-item>
+            <mt-tab-container-item id="留言评论">
+                <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+            </mt-tab-container-item>
+        </mt-tab-container>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            selected: "公司简介",
+        },
+        //方法
+        methods: {
+
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

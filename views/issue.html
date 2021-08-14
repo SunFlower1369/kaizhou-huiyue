@@ -34,10 +34,10 @@
             </div>
 
             <!--功能按钮-->
-            <!-- <div class="info" id="info">
+            <div class="info" id="info">
                 <div class="info-div">
                     <div v-for="item in infoArr" class="info-border" :key="item.title">
-                        <div class="info-bottom">
+                        <div class="info-bottom" @click="go(item.title)" id="issue">
                             <img :src="item.img" class="info-img" />
                             <div>
                                 <span class="info-title">{{item.title}}</span>
@@ -45,12 +45,25 @@
                         </div>
                     </div>
                 </div>
-            </div> -->
+            </div>
             <!--功能按钮-->
             <div class="info" id="info">
-                <div class="info-div">
-                    <!-- <div v-for="item in infoArr" class="info-border" :key="item.title"> -->
-                    <a href="./issue/issueMo.html?id=家居建材">
+                <!-- <div class="info-div">
+                    <div v-for="item in infoArr" class="info-border" :key="item.title"> 
+                        <div v-for="item in infoArr"  :key="item.title"></div>>
+                            <a href="">
+                                <div class="info-border">
+                                    <div class="info-bottom">
+                                        <img :src="item.img" class="info-img" />
+                                        <div>
+                                            <span class="info-title">{{item.title}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div> -->
+
+                <!-- <a href="./issue/issueMo.html?id=家居建材">
                         <div class="info-border">
                             <div class="info-bottom">
                                 <img src=" ../images/my/issue.png" class="info-img" />
@@ -59,8 +72,8 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <a href="./issue/issueMo.html?id=餐饮美食">
+                    </a> -->
+                <!-- <a href="./issue/issueMo.html?id=餐饮美食">
                         <div class="info-border">
                             <div class="info-bottom">
                                 <img src="../images/my/myissue.png" class="info-img" />
@@ -158,45 +171,45 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
-                    <!-- </div> -->
-                </div>
+                    </a> -->
+                <!-- </div> -->
             </div>
         </div>
+    </div>
 
-        <!-- 底部导航 -->
-        <div id="nav">
-            <ul>
-                <li>
-                    <a href="./index.html">首页</a>
-                </li>
-                <li>
-                    <a href="./gift.html">积分商城</a>
-                </li>
-                <li class="avtive">
-                    <a href="./issue.html">发布</a>
-                </li>
-                <li>
-                    <a href="./shop.html">商家</a>
-                </li>
-                <li>
-                    <a href="./my.html">个人中心</a>
-                </li>
-            </ul>
-        </div>
+    <!-- 底部导航 -->
+    <div id="nav">
+        <ul>
+            <li>
+                <a href="./index.html">首页</a>
+            </li>
+            <li>
+                <a href="./gift.html">积分商城</a>
+            </li>
+            <li class="avtive">
+                <a href="./issue.html">发布</a>
+            </li>
+            <li>
+                <a href="./shop.html">商家</a>
+            </li>
+            <li>
+                <a href="./my.html">个人中心</a>
+            </li>
+        </ul>
+    </div>
 
     </div>
-<!-- import Vue before Mint UI -->
-<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
-<script src="../js/vue/vue.js"></script>
-<!-- import JavaScript -->
-<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
-<script src="../js/mintui/index.js"></script>
-<!-- 引入组件库 -->
-<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
-<script src="../js/elementui/index.js"></script>
-<!-- Swiper JS -->
-<script src="../js/swiper-bundle.min.js"></script>
+    <!-- import Vue before Mint UI -->
+    <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+    <script src="../js/vue/vue.js"></script>
+    <!-- import JavaScript -->
+    <!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+    <script src="../js/mintui/index.js"></script>
+    <!-- 引入组件库 -->
+    <!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+    <script src="../js/elementui/index.js"></script>
+    <!-- Swiper JS -->
+    <script src="../js/swiper-bundle.min.js"></script>
     <script>
 
         //创建Vue实例,得到 ViewModel
@@ -274,7 +287,13 @@
                 ]
             },
             //方法
-            methods: {},
+            methods: {
+                go(title) {
+                    console.log(title)
+                    var tname = title
+                    window.location.href = "./issue/issueMo.html?tname=" + tname
+                }
+            },
             //计算属性
             computed: {},
             //过滤器
