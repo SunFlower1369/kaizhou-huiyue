@@ -60,21 +60,22 @@ window.onload = () => {
         methods: {
             lookDetail(id) {
                 console.log(id)
-                //window.location.href = "./index/detail.html";
+                window.location.href = "./index/detail.html";
             },
             loadBottom1() {
                 //未定义ID 
-                var maxId = 1
-                this.actives.push(
-                    axios.post('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&do=tc_msg_action&op=msg_list&page=' + (maxId++) + '&pagesize=10&m_type=0').then(res => {
-                        //console.log(res.data.data)
-                        this.actives = res.data.data
-                        console.log(maxId)
-                    }).catch(err => {
-                        console.log(err)
-                        this.$message.error('获取文章失败，请稍后再试！,错误信息：' + err)
-                    }))
-                this.$refs.loadmore1.onBottomLoaded();
+                // var maxId = 1
+                // this.actives.push(
+                //     axios.post('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&do=tc_msg_action&op=msg_list&page=' + (maxId++) + '&pagesize=10&m_type=0').then(res => {
+                //         //console.log(res.data.data)
+                //         this.actives = res.data.data
+                //         //console.log(maxId)
+                //     }).catch(err => {
+                //         console.log(err)
+                //        // this.$message.error('获取文章失败，请稍后再试！,错误信息：' + err)
+                //     })
+                //     )
+                // this.$refs.loadmore1.onBottomLoaded();
             },
             takePhone() {
                 console.log(this.actives.phone)
