@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../js/mintui/style.css">
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <link rel="stylesheet" href="../../css/index.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .mint-button {
+            height: 20px;
+            font-size: 14px;
+        }
+
+        .shopinfo li {
+            margin: 0.8rem 0;
+        }
+
+        .mint-navbar .mint-tab-item.is-selected {
+            margin-bottom: 1rem;
+        }
+
+        .box {
+            box-shadow: 1px 1px 1px #eeeeee;
+            padding: 0.5rem 1rem;
+            border: 1px #eeeeee solid;
+            box-shadow: 1px 1px 1px #eeeeee;
+            padding: 0.5rem 1rem;
+            border: 1px #eeeeee solid;
+            box-shadow: 1px 1px 1px #eeeeee;
+            padding: 0.5rem 1rem;
+            border: 1px #eeeeee solid;
+        }
+
+        .mint-cell {
+            flex: 1;
+        }
+
+        .mint-cell:last-child {
+            background-position: 0 0;
+        }
+        .mint-tab-item-label{
+            font-size: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak style="margin-bottom: 5rem;">
+        <div style="width: 100%;">
+            <mt-header title="详情">
+                <a slot="left" href="../index.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+
+        <div style="height: 25vh;">
+            <mt-swipe>
+                <mt-swipe-item v-for="img in swiper">
+                    <img :src="img.img" style="height: 25vh;width: 100%;">
+                </mt-swipe-item>
+            </mt-swipe>
+        </div>
+        <div style="margin:  1rem;">
+            <div>
+                <div>
+                    <span style="color: red;">￥钱</span> <del style="color:gray;font-size:9px">￥钱</del>
+                </div>
+                <div style="display: flex;font-size: 10px;">
+                    <!-- <div
+                        style=" border-bottom: 20px solid red;border-right: 10px solid transparent;width: auto;">
+                        会员卡，超级会员卡
+                    </div> -->
+                    <div style="background-color: yellow;width: auto;">
+                        会员卡，超级会员卡
+                    </div>
+                    <div style="background-color: black;color: white;">
+                        减 <span style="color: yellow;">多少钱</span> 呢
+                    </div>
+                </div>
+            </div>
+            <!-- 价格及喜爱程度 -->
+            <div style="text-align: center;float: right;margin-top: -1.5rem;">
+                <div style="display: flex;align-items: center;">
+                    <img src="../../images/index/hot.svg" style="width: 20px;height: 20px;">
+                    <span
+                        style="display: flex;align-items: center;font-size: 10px;border-radius: 0 50px 50px 0;background-color: red;height: 20px;margin: auto;">
+                        多少人喜欢
+                    </span>
+                </div>
+               
+            </div>
+
+        </div>
+        <!-- 名字及已售和剩余 -->
+        <div style="margin: 1rem;">
+            <h3>商品名称</h3>
+            <div style="color: gray;"><span>已售多少</span><span style="float: right;">剩余多少</span></div>
+        </div>
+        <!-- 判断是否是优质店铺  后端获取进行判断-->
+        <div v-show="true" style="margin:1rem 1rem;font-size: 13px;">
+            <span style="width: 14px;height: 14px;background-color: greenyellow;padding: 2px;text-align: center;">
+                优
+            </span>
+            <span style="color: red;">优质店铺</span>
+        </div>
+        <!-- 判断是否是会员 后端获取进行判断-->
+        <div style="padding: 0 1rem;">
+            <div style="background-color: black;color: orange;padding:  1rem;font-size: 12px;border-radius: 5px;">
+                <span>开通会员卡,超级会员卡立减多少钱</span>
+                <span style="float: right;">
+                    <span>去开通</span>
+                    <i class="el-icon-arrow-right"></i>
+                </span>
+            </div>
+        </div>
+        <!-- 功能区 -->
+        <div id="tool" style="padding: 1rem 0">
+            <!-- 邀请朋友 -->
+            <div style="padding: 0.2rem 1rem;">
+                <div class="box">
+                    <img src="../../images/header-img.jpeg" style="width: 40px;height: 40px;border-radius: 50%;">
+                </div>
+            </div>
+            <!-- 联系客服 -->
+            <div style="padding: 0.2rem 1rem;">
+                <div class="box" style="display: flex;align-items: center;">
+                    <img src="../../images/header-img.jpeg" style="width: 40px;height: 40px;border-radius: 50%;">
+                    <div style="flex: 1;margin-left: 1rem;">
+                        <span>联系客服</span>
+                        <mt-button type="danger" style="float: right;border-radius: 0;">拨打</mt-button>
+                    </div>
+                </div>
+            </div>
+            <!-- 交流群 -->
+            <div style="padding: 0.2rem 1rem;">
+                <div class="box" style="display: flex;align-items: center;">
+                    <img src="../../images/header-img.jpeg" style="width: 40px;height: 40px;border-radius: 50%;">
+                    <div style="flex: 1;margin-left: 1rem;">
+                        <div >
+                            <span>粉丝</span>
+                            <div>
+                                <span style="font-size: 14px;color: gray;">你好</span>
+                            </div>
+                        </div>
+                        <mt-button type="danger" style="float: right;border-radius: 0;margin-top: -2rem;">拨打</mt-button>
+                    </div>
+                </div>
+                <!-- <div class="box" style="display: flex;align-items: center;">
+                    <img src="../../images/header-img.jpeg" style="width: 40px;height: 40px;border-radius: 50%;">
+                    <mt-cell title="标题" label="描述信息" >
+                        <mt-button type="danger" style="float: right;border-radius: 0;">拨打</mt-button>
+                    </mt-cell>
+                </div> -->
+            </div>
+        </div>
+        <!-- 店铺详情 -->
+        <div style="border-bottom: 0.2rem #eeeeee solid;border-top: 0.2rem #eeeeee solid;padding: 1rem 0;">
+            <div style="margin: 0 1rem;">
+                <div style="text-align: center;">
+                    <span>店铺详情</span>
+                    <div style="width: 30px;height: 2px;background-color: red;margin:0.2rem 0 0 46%"></div>
+                </div>
+
+                <div style="margin-top: 1rem;">
+                    <span>农家鲜</span> <i class="el-icon-arrow-right" style="float: right;"></i>
+                </div>
+                <!-- 电话等 -->
+                <div>
+                    <ul class="shopinfo">
+                        <li>
+                            店铺电话：获取 <mt-button type="danger" style="float: right;">拨打</mt-button>
+                        </li>
+                        <li>
+                            资质信息展示 <mt-button type="danger" style="float: right;">查看</mt-button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- 详情评价等 -->
+        <div style="border-bottom: 0.2rem #eeeeee solid;padding-bottom: 1rem;">
+            <mt-navbar v-model="selected">
+                <mt-tab-item id="1">商品详情</mt-tab-item>
+                <mt-tab-item id="2">商品评价</mt-tab-item>
+            </mt-navbar>
+
+            <!-- tab-container -->
+            <mt-tab-container v-model="selected">
+                <mt-tab-container-item id="1" style="text-align: center;">
+                    <span>- 暂时没有详情介绍 -</span>
+                </mt-tab-container-item>
+                <mt-tab-container-item id="2">
+                    <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+                </mt-tab-container-item>
+        </div>
+        <!-- 人气推荐等 -->
+        <div style="text-align: center;margin: 0.5rem 0;">
+            <span>人气推荐</span>
+            <div style="width: 30px;height: 2px;background-color: red;margin:0.2rem 0 0 46%"></div>
+        </div>
+        <!-- 推荐模板 -->
+        <div>
+            <div style="float: left;width: 45%; margin:0.6rem 0 0 3%">
+                <div style="height: 100px;">
+                    <img src="../../images/header-img.jpeg" style="height: 100%; width: 100%;">
+                </div>
+                <span style="font-size: 14px;">商品名称</span>
+                <!-- 价格购物或者拼单数量  后端获取进行判断-->
+                <div style="margin-top: 1rem;">
+                    <span style="font-size: 14px;color: red;">￥多少钱</span>
+                    <span v-if="count == 0">
+                        <i class="el-icon-shopping-cart-2" style="float: right;color: red;"></i>
+                    </span>
+                    <span v-else style="float: right;font-size: 14px;">
+                        已拼{{count}}件
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 底部购买等 -->
+        <div style="height: 3rem;display: flex;align-items: center;font-size: 14px;background-color: #eeeeee;  position: fixed;
+        bottom: 0px;width: 100%;">
+            <div style="width: 16%;text-align: center;">
+                <img src="../../images/header-img.jpeg" style="height: 20px;width: 20px;">
+                <div>首页</div>
+            </div>
+            <div style="width: 16%;text-align: center;">
+                <img src="../../images/header-img.jpeg" style="height: 20px;width: 20px;">
+                <div>首页</div>
+            </div>
+            <div style="width: 16%;text-align: center;">
+                <img src="../../images/header-img.jpeg" style="height: 20px;width: 20px;">
+                <div>首页</div>
+            </div>
+            <div style="width: 26%;">
+                <mt-button class="join"
+                    style="width: 100%;height: 2.5rem;border-radius: 50px 0 0 50px;background-color: orangered;">加入购物车
+                </mt-button>
+            </div>
+            <div style="width: 26%;">
+                <mt-button type="danger" style=" width: 100%;  height: 2.5rem; border-radius: 0 50px 50px 0;">
+                    <div>￥多少钱</div>
+                    立即购买
+                </mt-button>
+            </div>
+        </div>
+        <br style="clear:both;" />
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            count: 3,
+            selected: "1",
+            swiper: [{
+                id: 1,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 2,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 3,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }, {
+                id: 4,
+                img: "https://img1.baidu.com/it/u=3279884260,3623454484&fm=26&fmt=auto&gp=0.jpg"
+            }],
+        },
+        //方法
+        methods: {
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>
