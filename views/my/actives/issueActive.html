@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../../../js/mintui/style.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        .avatar-uploader .el-upload {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+
+        .avatar {
+            width: 100vw;
+            height: 25vh;
+            display: block;
+        }
+
+        .avatar-div {
+            width: 100vw;
+            height: 25vh;
+            line-height: 25vh;
+            background-image: url('https://img1.baidu.com/it/u=3066722569,2341705378&fm=26&fmt=auto&gp=0.jpg');
+        }
+
+        .form-class {
+            height: 48px;
+            height: 100%;
+            line-height: 48px;
+            border-bottom: 1px #eeeeee solid;
+            display: flex;
+            font-size: 14px;
+        }
+
+        .title-class {
+            width: 105px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="详情">
+                <a slot="left" href="../actives.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <el-form ref="form" :model="form">
+            <!-- 活动海报 -->
+            <div>
+                <el-upload class="avatar-uploader" action="https://jsonplaceholder.typicode.com/posts/"
+                    :show-file-list="false" :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                    <img v-if="form.imageUrl" :src="form.imageUrl" class="avatar">
+                    <div v-else class="avatar-div">
+                        <div style="height: 25%;width: 100%;">
+                            <i class="el-icon-camera-solid" style="font-size: 50px;"></i>
+                        </div>
+                        <i class="el-icon-plus"></i>
+                        <span>添加活动海报</span>
+                    </div>
+                </el-upload>
+            </div>
+            <!-- 活动信息等 -->
+            <div style="padding:  0 3%;">
+                <div class="form-class">
+                    <div class="title-class">主题:</div>
+                    <input placeholder="请输入内容" v-model="form.title" style="border: none;outline: none; "></input>
+                </div>
+                <!-- 时间 -->
+                <div class="form-class">
+                    <div class="title-class">时间:</div>
+                    <el-time-picker v-model="form.start" placeholder="开始时间" style="width: 35%;" @focus="forbid">
+                    </el-time-picker>-
+                    <el-time-picker v-model="form.end" placeholder="结束时间" style="width: 35%;" @focus="forbid">
+                    </el-time-picker>
+                </div>
+                <!-- 费用等 -->
+                <!-- <div class="form-class">
+                    <div class="title-class">费用: <i class="el-icon-warning"></i> </div>
+                    <div style="display: block;flex: 1;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <div style="display: flex;align-items: center;">
+                                <div v-model="form.money">{{form.money}}</div>
+                                <i class="el-icon-arrow-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="form-class">
+                    <div class="title-class">费用: </div>
+                    <div style="display: block;flex: 1;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <span v-model="form.money">{{form.money}}</span>
+                            <i class="el-icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-class">
+                    <div class="title-class">活动形式: <i class="el-icon-warning"></i> </div>
+                    <div style="flex: 1;display: block;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <input type="radio" v-model="form.sex" value="线上"
+                                style="color: -internal-light-dark-color(blue, white);">线上
+                            <input type="radio" v-model="form.sex" value="线下">线下
+                        </div>
+                    </div>
+                </div>
+                <div class="form-class">
+                    <div class="title-class">地点: </div>
+                    <div style="display: block;flex: 1;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <span v-model="form.address">{{form.address}}</span>
+                            <i class="el-icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- 活动详情描述 -->
+                <div style="border-top:0.4rem #eee solid;border-bottom:0.4rem #eee solid;padding: 1rem;">
+                    <textarea v-model="form.detial" rows="10" placeholder="活动详情描述"
+                        style="width: 100%;border: none;"></textarea>
+                </div>
+                <div class="form-class">
+                    <div class="title-class">报名设置: </div>
+                    <div style="display: block;flex: 1;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <span v-model="form.join">{{form.join}}</span>
+                            <i class="el-icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-class" style="border-bottom: 0.4rem #eee solid;">
+                    <div class="title-class">售后服务电话: </div>
+                    <div style="display: block;flex: 1;">
+                        <div style="float: right;margin-right: 0.5rem;">
+                            <span v-model="form.phone">{{form.phone}}</span>
+                            <i class="el-icon-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div style="margin: 1rem 0;">
+                    <span>允许在平台曝光</span>
+                    <el-switch v-model="form.isok" style="float: right;">
+                    </el-switch>
+                </div>
+                <!-- 协议和发布 -->
+                <div >
+                    <div>
+                        <el-checkbox label="" v-model="form.agree">
+                            <span>我同意 <span style="color: cornflowerblue;">《互动吧服务协议》 </span> </span>
+                        </el-checkbox>
+                    </div>
+                    <div style="text-align: center;margin-top: 1rem;">
+                        <el-button type="primary" style="width: 90%;">发布</el-button>
+                    </div>
+                </div>
+            </div>
+        </el-form>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            form: {
+                imageUrl: '',
+                title: '',
+                resource: '',
+                sex: '',
+                money: '默认免费',
+                start: '',
+                end: '',
+                address: '请选择',
+                detial: '',
+                phone: '',
+                join: '',
+                isok: true,
+                agree: false
+            }
+        },
+        //方法
+        methods: {
+            handleAvatarSuccess(res, file) {
+                this.form.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload(file) {
+                // const isJPG = file.type === 'image/jpeg';
+                // const isLt2M = file.size / 1024 / 1024 < 2;
+
+                // if (!isJPG) {
+                //   this.$message.error('上传头像图片只能是 JPG 格式!');
+                // }
+                // if (!isLt2M) {
+                //   this.$message.error('上传头像图片大小不能超过 2MB!');
+                // }
+                // return isJPG && isLt2M;
+            },
+            forbid() {
+                //禁止软键盘弹出
+                document.activeElement.blur();
+            },
+            handleChange(event) {
+                this.form.isok = !this.form.isok
+            }
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

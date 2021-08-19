@@ -46,25 +46,32 @@
 
 <body>
     <div id="app" v-cloak>
-        <a href="./shopManage/myshop.html">
+        <div style="width: 100%;">
+            <mt-header title="商家管理">
+                <a slot="left" href="../my.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <a href="./storeManage/mystore.html">
             <mt-cell title="我的店铺" label="店铺信息修改，门店照片修改">
                 <i class="el-icon-arrow-right"></i>
                 <img src="../../images/shop.png" slot="icon" width="45" style="margin-bottom: -6%;">
             </mt-cell>
         </a>
-        <a href="./shopManage/goodsManage.html">
+        <a href="./storeManage/goodsManage.html">
             <mt-cell title="商品管理">
                 <i class="el-icon-arrow-right"></i>
                 <img slot="icon" src="../../images/shop.png" width="35">
             </mt-cell>
         </a>
-        <a href="./shopManage/issueGoods.html">
+        <a href="./storeManage/issueGoods.html">
             <mt-cell title="发布商品">
                 <i class="el-icon-arrow-right"></i>
                 <img slot="icon" src="../../images/shop.png" width="35">
             </mt-cell>
         </a>
-        <a href="./shopManage/shopManageAllOrder.html">
+        <a href="./storeManage/storeManageAllOrder.html">
             <mt-cell title="所有订单">
                 <i class="el-icon-arrow-right"></i>
                 <img slot="icon" src="../../images/shop.png" width="35">
@@ -76,7 +83,7 @@
                 <img slot="icon" src="../../images/shop.png" width="35">
             </mt-cell>
         </a>
-        <a href="../issue/shopJoin.html">
+        <a href="../issue/storeJoin.html">
             <mt-cell title="新店入驻">
                 <i class="el-icon-arrow-right"></i>
                 <img slot="icon" src="../../images/shop.png" width="35">

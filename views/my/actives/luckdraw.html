@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>抽奖</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../../../js/mintui/style.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-navbar .mint-tab-item.is-selected {
+            border: 2px #26a2ff solid;
+            margin-bottom: 0;
+            border-radius: 5px;
+        }
+
+        .mint-navbar .mint-tab-item {
+            padding: 7px 0;
+        }
+
+        .mint-tab-container-wrap {
+            margin-top: 0.5rem;
+        }
+
+        .avatar-uploader .el-upload {
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+
+        .avatar {
+            width: 45vw;
+            height: 35vh;
+            display: block;
+        }
+
+        .avatar-div {
+            width: 45vw;
+            height: 35vh;
+            line-height: 35vh;
+            background-color: #CEF6EC;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="详情">
+                <a slot="left" href="../actives.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <div style="margin: 0 0.5rem;">
+            <el-tabs v-model="activeName" @tab-click="handleClick">
+                <el-tab-pane label="热门" name="1">
+                    <mt-navbar v-model="underhot">
+                        <mt-tab-item id="1">全部</mt-tab-item>
+                        <mt-tab-item id="2">门店拉新</mt-tab-item>
+                        <mt-tab-item id="3">引流到店</mt-tab-item>
+                        <mt-tab-item id="4">提前锁客</mt-tab-item>
+                    </mt-navbar>
+    
+                    <!-- tab-container -->
+                    <mt-tab-container v-model="underhot">
+                        <mt-tab-container-item id="1">
+                            <!-- 创建 -->
+                            <div style="width: 45vw;height: 35vh;margin-left: 2%;float: left;margin-top: 0.5rem;">
+                                <el-upload action="https://jsonplaceholder.typicode.com/posts/" :show-file-list="false"
+                                    :on-success="handleAvatarSuccess" :before-upload="beforeAvatarUpload">
+                                    <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                                    <div v-else class="avatar-div">
+                                        <div style="height: 15%;width: 100%;">
+                                            <i class="el-icon-circle-plus" style="font-size: 50px;color: blue;"></i>
+                                        </div>
+                                        <span style="font-size: 14px;">创建自定义抽奖活动</span>
+                                    </div>
+                                </el-upload>
+                            </div>
+                            <!-- 创建成功模板 -->
+                            <div style="width: 45vw;height: 35vh;margin-left: 2%;float: left;margin-top: 0.5rem;">
+                                <div style="position: relative;">
+                                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                                        style="width: 45vw;height: 31vh;border-radius: 2%;">
+                                    <mt-badge type="warning"
+                                        style="border-radius:2% 0 20% 0;position: absolute;top: 0;left: 0;">免费</mt-badge>
+                                    <div
+                                        style="position: absolute;bottom:10px;left: 10px;font-size: 12px;color: blanchedalmond;">
+                                        多少人
+                                    </div>
+                                </div>
+                                <div style="overflow: hidden;width: 100%;text-overflow: ellipsis;white-space: nowrap;">
+                                    名称dfasfafdafdsafsdafadsfasfadfa</div>
+                            </div>
+                            <div style="width: 45vw;height: 35vh;margin-left: 2%;float: left;margin-top: 0.5rem;">
+                                <div style="position: relative;">
+                                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                                        style="width: 45vw;height: 31vh;border-radius: 2%;">
+                                    <mt-badge type="warning"
+                                        style="border-radius:2% 0 20% 0;position: absolute;top: 0;left: 0;">免费</mt-badge>
+                                    <div
+                                        style="position: absolute;bottom:10px;left: 10px;font-size: 12px;color: blanchedalmond;">
+                                        多少人
+                                    </div>
+                                </div>
+                                <div style="overflow: hidden;width: 100%;text-overflow: ellipsis;white-space: nowrap;">
+                                    名称dfasfafdafdsafsdafadsfasfadfa</div>
+                            </div>
+                            <div style="width: 45vw;height: 35vh;margin-left: 2%;float: left;margin-top: 0.5rem;">
+                                <div style="position: relative;">
+                                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                                        style="width: 45vw;height: 31vh;border-radius: 2%;">
+                                    <mt-badge type="warning"
+                                        style="border-radius:2% 0 20% 0;position: absolute;top: 0;left: 0;">免费</mt-badge>
+                                    <div
+                                        style="position: absolute;bottom:10px;left: 10px;font-size: 12px;color: blanchedalmond;">
+                                        多少人
+                                    </div>
+                                </div>
+                                <div style="overflow: hidden;width: 100%;text-overflow: ellipsis;white-space: nowrap;">
+                                    名称dfasfafdafdsafsdafadsfasfadfa</div>
+                            </div>
+                            <div style="width: 45vw;height: 35vh;margin-left: 2%;float: left;margin-top: 0.5rem;">
+                                <div style="position: relative;">
+                                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                                        style="width: 45vw;height: 31vh;border-radius: 2%;">
+                                    <mt-badge type="warning"
+                                        style="border-radius:2% 0 20% 0;position: absolute;top: 0;left: 0;">免费</mt-badge>
+                                    <div
+                                        style="position: absolute;bottom:10px;left: 10px;font-size: 12px;color: blanchedalmond;">
+                                        多少人
+                                    </div>
+                                </div>
+                                <div style="overflow: hidden;width: 100%;text-overflow: ellipsis;white-space: nowrap;">
+                                    名称dfasfafdafdsafsdafadsfasfadfa</div>
+                            </div>
+                        </mt-tab-container-item>
+                        <mt-tab-container-item id="2">
+                        </mt-tab-container-item>
+                        <mt-tab-container-item id="3">
+                        </mt-tab-container-item>
+                        <mt-tab-container-item id="4">
+                        </mt-tab-container-item>
+                    </mt-tab-container>
+                </el-tab-pane>
+                <el-tab-pane label="餐饮美食" name="2">餐饮美食</el-tab-pane>
+            </el-tabs>
+        </div>
+        
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            underhot: '1',
+            activeName: '1',
+            imageUrl: '',
+        },
+        //方法
+        methods: {
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            handleAvatarSuccess(res, file) {
+                this.form.imageUrl = URL.createObjectURL(file.raw);
+            },
+            beforeAvatarUpload(file) {
+                // const isJPG = file.type === 'image/jpeg';
+                // const isLt2M = file.size / 1024 / 1024 < 2;
+
+                // if (!isJPG) {
+                //   this.$message.error('上传头像图片只能是 JPG 格式!');
+                // }
+                // if (!isLt2M) {
+                //   this.$message.error('上传头像图片大小不能超过 2MB!');
+                // }
+                // return isJPG && isLt2M;
+            },
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

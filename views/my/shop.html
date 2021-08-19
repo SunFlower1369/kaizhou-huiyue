@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>我的资料</title>
+    <!-- 引入样式 -->
+    <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
+    <!-- import CSS -->
+    <link rel="stylesheet" href="../../js/mintui/style.css">
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .mint-search {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <div>
+            <mt-header title="商城">
+                <a slot="left" href="../my.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <mt-search v-model="search" placeholder="搜索">
+        </mt-search>
+        <!-- 轮播 -->
+        <div style="height: 20vh;width: 100%;">
+            <mt-swipe :auto="2000">
+                <mt-swipe-item>1</mt-swipe-item>
+                <mt-swipe-item>2</mt-swipe-item>
+                <mt-swipe-item>3</mt-swipe-item>
+            </mt-swipe>
+        </div>
+        <!-- 按钮 -->
+        <div style="display: flex;">
+            <div style="height: 10vh;width: 20%;text-align: center;">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            search: ''
+        },
+        //方法
+        methods: {
+
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>

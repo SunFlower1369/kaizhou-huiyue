@@ -122,10 +122,10 @@
                         <!-- 上拉加载 -->
                         <mt-loadmore :bottom-method="loadBottom3" :bottom-all-loaded="allLoaded3" ref="loadmore3">
                             <li>
-                                <div v-for="item in ShopDetail" :key="item.id" class="container-child"
+                                <div v-for="item in storeDetail" :key="item.id" class="container-child"
                                     style="margin:0.5rem 0">
                                     <div class="shop">
-                                        <a href="./shop/shopDetail.html">
+                                        <a href="./store/storeDetail.html">
                                             <div style="display: flex;">
                                                 <img :src="item.img" class="shop-avatar">
                                                 <div class="name-tag">
@@ -242,7 +242,7 @@
                     <a href="./issue.html">发布</a>
                 </li>
                 <li class="active">
-                    <a href="./shop.html">商家</a>
+                    <a href="./store.html">商家</a>
                 </li>
                 <li>
                     <a href="./my.html">个人中心</a>
@@ -277,7 +277,7 @@
             score: 4,
             loading: false,
             allLoaded3: false,
-            ShopDetail: [{
+            storeDetail: [{
                 id: 1,
                 img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
                 name: "天越网络",

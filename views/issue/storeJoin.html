@@ -13,6 +13,10 @@
         [v-cloak] {
             display: none;
         }
+        body{
+            padding: 0;
+            margin: 0;
+        }
 
         .el-upload--picture-card {
             height: 100px;
@@ -28,6 +32,13 @@
 
 <body>
     <div id="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="商家入驻">
+                <a slot="left" href="../issue.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
         <mt-field label="店铺名称" placeholder="必填，输入门店的门店名"></mt-field>
         <div style="display: flex;height: 5.5vh; align-items: center;margin-left: 0.6rem;">
             <span>店铺类型</span>

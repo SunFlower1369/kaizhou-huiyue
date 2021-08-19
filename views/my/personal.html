@@ -14,11 +14,22 @@
         [v-cloak] {
             display: none;
         }
+        body{
+            padding: 0;
+            margin: 0;
+        }
     </style>
 </head>
 
 <body>
     <div id="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="个人资料">
+                <a slot="left" href="../my.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
         <mt-field label="微信昵称:" v-model="weChatName">
         </mt-field>
         <mt-field label="姓名昵称:" type="text" placeholder="请输入姓名昵称" v-model="name"></mt-field>
@@ -82,7 +93,7 @@
             select: '',
             me: false,
             dialogFormVisible: false,
-            sex:'',
+            sex: '',
             leixing: [
                 {
                     flex: 1,

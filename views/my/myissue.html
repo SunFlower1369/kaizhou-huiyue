@@ -37,6 +37,13 @@
 
 <body>
     <div id="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="我的发布">
+                <a slot="left" href="../my.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
         <ul>
             <li style="margin-bottom: 2rem;">
                 <div v-for="item in actives" :key="item.id" class="activemo-class" style="margin-top: 1rem;">

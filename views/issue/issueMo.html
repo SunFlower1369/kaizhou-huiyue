@@ -10,6 +10,11 @@
     <!-- 引入样式 -->
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
         .el-input.is-disabled .el-input__inner {
             background-color: white;
             border-color: white;
@@ -24,32 +29,41 @@
 
 <body>
     <div id="app">
-        <!-- <mt-field placeholder="请输入你要发布的内容" type="textarea" rows="4" v-model="issuetext" required></mt-field> -->
-        <textarea rows="4" placeholder="请输入你要发布的内容" v-model="item.content"
-            style="width: 100%;border: none;font-size: 1.2rem;" required></textarea>
-        <!-- 上传图片 -->
-        <div style="margin: 0.5rem 0;">
-            <el-upload class="upload-demo" ref="upload" action="https://jsonplaceholder.typicode.com/posts/"
-                list-type="picture">
-                <img src="../../images/photo.svg" style="height: 2rem;width: 2rem;" slot="trigger">
-            </el-upload>
+        <div style="width: 100%;">
+            <mt-header title="">
+                <a slot="left" href="../issue.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
         </div>
-        <!-- 地址等 -->
-        <div style="display: flex;align-items: center;height: 4rem;border-bottom: 1px #eeeeee solid;">
-            <i class="el-icon-location-outline" style="color: blue;font-size: 1.5rem;"></i>
-            <el-input placeholder="这里的地址是自动获取的" v-model="item.gpsaddress" disabled>
-            </el-input>
-            <i class="el-icon-arrow-right" style="margin-left: 6.5rem;"></i>
+        <div style="padding: 0 1rem;">
+            <!-- <mt-field placeholder="请输入你要发布的内容" type="textarea" rows="4" v-model="issuetext" required></mt-field> -->
+            <textarea rows="4" placeholder="请输入你要发布的内容" v-model="item.content"
+                style="width: 100%;border: none;font-size: 1.2rem;" required></textarea>
+            <!-- 上传图片 -->
+            <div style="margin: 0.5rem 0;">
+                <el-upload class="upload-demo" ref="upload" action="https://jsonplaceholder.typicode.com/posts/"
+                    list-type="picture">
+                    <img src="../../images/photo.svg" style="height: 2rem;width: 2rem;" slot="trigger">
+                </el-upload>
+            </div>
+            <!-- 地址等 -->
+            <div style="display: flex;align-items: center;height: 4rem;border-bottom: 1px #eeeeee solid;">
+                <i class="el-icon-location-outline" style="color: blue;font-size: 1.5rem;"></i>
+                <el-input placeholder="这里的地址是自动获取的" v-model="item.gpsaddress" disabled>
+                </el-input>
+                <i class="el-icon-arrow-right" style="margin-left: 6.5rem;"></i>
+            </div>
+            <div style="margin:1rem 0">
+                <el-row>
+                    <i class="el-icon-mobile"></i>
+                    <input type="number" v-model="item.phone" placeholder="请输入您的电话号码"
+                        style="margin-left: 1rem;border: none;">
+                </el-row>
+            </div>
+            <mt-button type="danger" style="position: absolute;bottom: 0;width: 80%;margin:0 5%;" @click="issueNow(item)">
+                免费，立刻发布</mt-button>
         </div>
-        <div style="margin:1rem 0">
-            <el-row>
-                <i class="el-icon-mobile"></i>
-                <input type="number" v-model="item.phone" placeholder="请输入您的电话号码"
-                    style="margin-left: 1rem;border: none;">
-            </el-row>
-        </div>
-        <mt-button type="danger" style="position: absolute;bottom: 0;width: 90%; margin: 0 3%" @click="issueNow(item)">
-            免费，立刻发布</mt-button>
 
     </div>
 

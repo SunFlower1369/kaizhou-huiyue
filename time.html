@@ -13,40 +13,37 @@
     <!-- 引入样式 -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
 
+        .avatar-uploader .el-upload {
+            border: 1px dashed #d9d9d9;
+            border-radius: 6px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-uploader .el-upload:hover {
+            border-color: #409EFF;
+        }
+
+
+        .avatar {
+            width: 100vw;
+            height: 20vh;
+            display: block;
+        }
     </style>
 </head>
 
 <body>
     <div id="app">
-        <div v-for="item in actives">
-            
+      <div style="height: 200px;width: 200px ;background: darkblue;border-radius: 5%;">
 
-            </div>
-            <!--时间等-->
-            <div id="date-detail" class="date-detail">
-                <el-row style="margin:0 0 1rem 0">
-                    <i class="el-icon-location-outline" style="color:red"></i>
-                    {{item.loc_address }}
-                </el-row>
-                <div class="time-detail">
-                    <span class="issue-date-class">{{item.crtime}}</span>
-                    <span class="look-class issue-date-class">
-                        查看详情
-                        <i class="el-icon-d-arrow-right"></i>
-                    </span>
-                </div>​​​​​​​
-                <div class="one">
-                    <div class="one0"></div>
-                    <i class="el-icon-view"></i>
-                    <span class="see">
-                        <span style="color:blue">{{ item.look_cnt }}</span>人浏览
-                    </span>
-                </div>
-            </div>
-        </div>
-
-
+      </div>
     </div>
 </body>
 
@@ -59,48 +56,29 @@
 <!-- 引入vue router -->
 <script src='https://unpkg.com/vue-router/dist/vue-router.js'></script>
 <script>
-    const kind = {
-        '餐饮美食': ['早餐早点', '饭店餐厅', '快餐外卖', '烧烤麻辣', '夜宵天地', '火锅香辣', '茶餐西餐', '甜品饮料', '零食水果'],
-        '休闲娱乐': ['美容美发', '游戏电玩 ', '文体户外', '汗蒸养生', '网吧网咖', '游泳馆', '健身房', '按摩推拿', '足浴洗浴', '咖啡厅', 'KTV', '酒吧', '电影院', '茶馆'],
-        '酒店旅游': ['星级酒店', '旅游包年', '商务宾馆', '旅行社', '旅游景点', '农家乐', '度假村'],
-        '购物天地': ['文具办公', '美容护肤', '数码科技', '保健养生', '服装鞋包', '眼镜饰品', '家用电器', '手机专卖', '户外运动', '名茶烟酒', '珍宝钟表', '鲜花礼品', '商行超市', '生鲜特产', '生鲜水产', '海鲜水产'],
-        '生活服务': ['的士/代驾', '家政服务', '送水站', '宠物服务', '开锁修锁', '管道疏通', '家电维修', '二手回收', '衣服洗护', '搬家服务', '快递服务', '物流服务', '货物运输', '其他服务'],
-        '汽车服务': ['摩托车/电动车', '4S店', '汽车美容', '维修保养', '驾校教练', '汽配销售', '车险信贷', '汽车销售', '汽车租聘', '共享汽车'],
-    };
-    //创建Vue实例,得到 ViewModel
-    var vm = new Vue({
+    new Vue({
         el: '#app',
-        data: {
-            value2: null,
-            actives: [],
+        data() {
+            return {
+                form: {
+                    name: '',
+                    region: '',
+                    date1: '',
+                    date2: '',
+                    delivery: false,
+                    type: [],
+                    resource: '',
+                    desc: ''
+                }
+            }
         },
-        //方法
         methods: {
-            open(picker) {
-                // console.log(picker);
-                this.$refs[picker].open();
-            },
-            handleChange(value) {
-                // console.log(value);
-                Toast({
-                    message: '已选择 ' + value.toString(),
-                    position: 'bottom'
-                })
-            },
-        },
-        created() {
-            axios.get('https://kztch.tiantianapp.cn/huiyue/wxapp.php?t=0&do=tc_msg_action&op=msg_list&page=1&pagesize=10&m_type=0').then(res => {
-                console.log(res.data.data)
-                this.actives = res.data.data
-            })
-        },
-        //计算属性
-        computed: {},
-        //过滤器
-        filter: {},
-        //侦听器
-        watch: {},
-    });
+            onSubmit() {
+                console.log('submit!');
+            }
+        }
+    })
+
 </script>
 
 </html>

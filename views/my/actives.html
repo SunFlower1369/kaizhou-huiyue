@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name=viewport content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>发布</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" href="../../js/mintui/style.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        a {
+            color: black;
+            -webkit-tap-highlight-color:rgba(255,0,0,0);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="app" v-cloak>
+        <div style="width: 100%;">
+            <mt-header title="详情">
+                <a slot="left" href="../my.html">
+                    <mt-button icon="back">返回</mt-button>
+                </a>
+            </mt-header>
+        </div>
+        <div style="text-align: center;">
+            <h3>选择你要发布的活动</h3>
+        </div>
+        <!-- 活动模板 -->
+        <div>
+            <a href="./actives/issueActive.html">
+                <div style="float: left;width: 30%;text-align: center;height: 20vh;margin-left: 3%;">
+                    <img src="../../images/active/join.png" style="width:80%;height: 60%;">
+                    <div>报名活动</div>
+                    <div style="font-size: 12px;">线上线下全场景通用</div>
+                </div>
+            </a>
+            <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/write.png" style="width:80%;height: 60%;">
+                <div>填表活动</div>
+                <div style="font-size: 12px;">自定义信息收集</div>
+            </div>
+            <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/group.png" style="width:80%;height: 60%;">
+                <div>拼团活动</div>
+                <div style="font-size: 12px;">老带新裂变神器</div>
+            </div>
+            <a href="./actives/luckdraw.html">
+                 <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/luck.png" style="width:80%;height: 60%;">
+                <div>抽奖活动</div>
+                <div style="font-size: 12px;">低成本引流神器</div>
+            </div>
+            </a>
+           
+            <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/h5.png" style="width:80%;height: 60%;">
+                <div>H5宣传页</div>
+                <div style="font-size: 12px;">炫酷新潮的动效</div>
+            </div>
+            <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/fission.png" style="width: 80%;height: 60%;">
+                <div>裂变活动</div>
+                <div style="font-size: 12px;">二级分销 裂变海报</div>
+            </div>
+            <div style="float: left;width: 30%;text-align: center;height:20vh;margin-left: 3%;">
+                <img src="../../images/active/vote.png" style="width:80%;height: 60%;">
+                <div>投票活动</div>
+                <div style="font-size: 12px;">评选互动高效裂变</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+<!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
+<script src="../../js/vue/vue.js"></script>
+<!-- import JavaScript -->
+<!-- <script src="https://unpkg.com/mint-ui/lib/index.js"></script> -->
+<script src="../../js/mintui/index.js"></script>
+<!-- 引入组件库 -->
+<!-- <script src="https://unpkg.com/element-ui/lib/index.js"></script> -->
+<script src="../../js/elementui/index.js"></script>
+<!-- Swiper JS -->
+<script src="../../js/swiper-bundle.min.js"></script>
+<script>
+    //创建Vue实例,得到 ViewModel
+    var vm = new Vue({
+        el: '#app',
+        data: {
+        },
+        //方法
+        methods: {
+
+        },
+        //计算属性
+        computed: {},
+        //过滤器
+        filter: {},
+        //侦听器
+        watch: {},
+    });
+</script>
+
+</html>
