@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='https://unpkg.com/element-ui/lib/theme-chalk/index.css'>
     <!-- import CSS -->
     <link rel="stylesheet" href="../../js/mintui/style.css">
+    <link rel="stylesheet" href="../../js/swiper-bundle.min.css">
     <style>
         [v-cloak] {
             display: none;
@@ -18,11 +19,90 @@
         body {
             padding: 0;
             margin: 0;
+            position: relative;
         }
 
         .mint-search {
             height: 100%;
         }
+
+        .detail {
+            margin: 0.3rem 0;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            display: -webkit-box;
+            word-break: break-all;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+        }
+
+        .mint-navbar .mint-tab-item.is-selected {
+            margin-bottom: 0;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 40vh;
+
+        }
+
+        .swiper-slide {
+            text-align: center;
+            font-size: 18px;
+            background: #eee;
+
+            /* Center slide text vertically */
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            -webkit-align-items: center;
+            align-items: center;
+        }
+
+        .button-class {
+            height: 10vh;
+            width: 19%;
+            text-align: center;
+            float: left;
+            margin: 1% 0 1% 1%;
+        }
+
+        .btn {
+            width: 30%;
+            text-align: center;
+            height: 5vh;
+            line-height: 5vh;
+            position: relative;
+            border: 1px red solid
+        }
+
+        .btn::before {
+            position: absolute;
+            content: '';
+            width: 10px;
+            height: 20px;
+            top: 13px;
+            right: -1px;
+            border-radius: 10px 0 0 10px;
+            border-right: none;
+            border-radius: 1px blue solid;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #212447;
+            transform: rotate(-45deg);
+            position: relative;
+            top: 0.02rem;
+            right: -0.05rem;
+        }
+
     </style>
 </head>
 
@@ -46,10 +126,202 @@
             </mt-swipe>
         </div>
         <!-- 按钮 -->
-        <div style="display: flex;">
-            <div style="height: 10vh;width: 20%;text-align: center;">
+        <div style="margin-bottom: 1rem;">
+            <div class="button-class">
                 <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
                 <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <br style="clear:both;" />
+        </div>
+        <!-- 分类 -->
+        <div>
+            <mt-navbar v-model="selected">
+                <mt-tab-item id="1">选项一</mt-tab-item>
+                <mt-tab-item id="2">选项二</mt-tab-item>
+                <mt-tab-item id="3">选项三</mt-tab-item>
+            </mt-navbar>
+
+            <!-- tab-container -->
+            <mt-tab-container v-model="selected">
+                <mt-tab-container-item id="1">
+                    <!-- <div style="background: #eee;padding: 0.5rem;">
+                        <div style="width: 45%;height: 35vh;float: left;margin-left: 3%;background: white;" id="1">
+                            <div style="height: 100%;">
+                                <img src="../../images/header-img.jpeg" style="height: 70%;width: 100%;">
+                                <div style="padding: 0 0.5rem;">
+                                    <div class="detail">
+                                        你好T雪山2021最新款新款罡风印花韩版很好看哟
+                                    </div>
+                                    <div>
+                                        <span>这里是价格</span>
+                                        <mt-button plain type="danger"
+                                            style="float: right;height: 20px;font-size: 16px;line-height: 20px;">购买
+                                        </mt-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="width: 45%;height: 35vh;float: left;margin-left: 3%;background: white;" id="1">
+                            <div style="height: 100%;">
+                                <img src="../../images/header-img.jpeg" style="height: 70%;width: 100%;">
+                                <div style="padding: 0 0.5rem;">
+                                    <div class="detail">
+                                        你好T雪山2021最新款新款罡风印花韩版很好看哟
+                                    </div>
+                                    <div>
+                                        <span>这里是价格</span>
+                                        <mt-button plain type="danger"
+                                            style="float: right;height: 20px;font-size: 16px;line-height: 20px;">购买
+                                        </mt-button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br style="clear:both;" />
+                    </div> -->
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div style="width: 90%;height: 90%;background: white;" id="1">
+                                    <div>
+                                        <img src="../../images/header-img.jpeg" style="width: 100%;height: 25vh;">
+                                        <div style="padding: 0 0.5rem;">
+                                            <div class="detail">
+                                                你好T雪山2021最新款新款罡风印花韩版很好看哟
+                                            </div>
+                                            <div>
+                                                <span>这里是价格</span>
+                                                <mt-button plain type="danger"
+                                                    style="float: right;height: 20px;font-size: 16px;line-height: 20px;">
+                                                    购买
+                                                </mt-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </mt-tab-container-item>
+                <mt-tab-container-item id="2">
+                    <mt-cell v-for="n in 4" :title="'测试 ' + n" />
+                </mt-tab-container-item>
+                <mt-tab-container-item id="3">
+                    <mt-cell v-for="n in 6" :title="'选项 ' + n" />
+                </mt-tab-container-item>
+            </mt-tab-container>
+            <!-- 按钮 -->
+
+        </div>
+        <div style="margin: 1rem 0; ">
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <div class="button-class">
+                <img src="../../images/header-img.jpeg" style="width: 80%;height: 70%;border-radius: 50%;">
+                <span>砍价</span>
+            </div>
+            <br style="clear:both;" />
+        </div>
+        <!-- 新品和优惠券 -->
+        <div>
+            <!-- 新品等 -->
+            <div style="margin-bottom:1.5rem">
+                <div style="height: 10vh;width: 48%;float: left;position: relative;margin:1% 0 0 1%">
+                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                        style="width: 100%;height: 100%;">
+                    <div style="position: absolute; font-size: 14px;top: 10px;left: 10px;">
+                        这里是描述
+                    </div>
+                </div>
+                <div style="height: 10vh;width: 48%;float: left;position: relative;margin:1% 0 0 1%">
+                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                        style="width: 100%;height: 100%;">
+                    <div style="position: absolute; font-size: 14px;top: 10px;left: 10px;">
+                        这里是描述
+                    </div>
+                </div>
+                <div style="height: 10vh;width: 48%;float: left;position: relative;margin:1% 0 0 1%">
+                    <img src="https://img2.baidu.com/it/u=513593983,1832681374&fm=26&fmt=auto&gp=0.jpg"
+                        style="width: 100%;height: 100%;">
+                    <div style="position: absolute; font-size: 14px;top: 10px;left: 10px;">
+                        这里是描述
+                    </div>
+                </div>
+                <br style="clear:both;" />
+            </div>
+            <!-- 优惠券 -->
+            <!-- <div>
+                <div class="btn">
+                    <div>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 服装等 -->
+            <div style="background-color:#eee;padding: 0.5rem 0;">
+                <div style="text-align: center;">
+                    <span style="margin-right: 1rem;color: blue;">///</span> 这是我的名字 <span
+                        style="margin-left: 1rem;color: blue;">///</span>
+                </div>
+                <div style="width: 45%;background-color: white;margin: 2% 0 2% 3%;float: left;position: relative;">
+                    <img src="../../images/header-img.jpeg" style="width: 100%;height: 25vh;">
+                    <div style="padding: 0 0.5rem;">
+                        <div class="detail">
+                            你好T雪山2021最新款新款罡风印花韩版很好看哟
+                        </div>
+                        <div>
+                            <span>这里是价格</span>
+                            <mt-button plain type="danger"
+                                style="float: right;height: 20px;font-size: 16px;line-height: 20px;">
+                                购买
+                            </mt-button>
+                        </div>
+                    </div>
+                    <div style="text-align: left;width: 0; height: 0; border-top: 3rem solid red; border-right: 3rem solid transparent;position: absolute;top: 0;left: 0;">
+                       
+                       <p>推荐</p> 
+                    </div>
+                </div>
+
+                <br style="clear:both;" />
             </div>
         </div>
     </div>
@@ -70,7 +342,8 @@
     var vm = new Vue({
         el: '#app',
         data: {
-            search: ''
+            search: '',
+            selected: '1'
         },
         //方法
         methods: {
@@ -82,6 +355,15 @@
         filter: {},
         //侦听器
         watch: {},
+    });
+    var swiper = new Swiper('.swiper-container', {
+        slidesPerView: 2,
+        spaceBetween: 10,
+        freeMode: true,
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
     });
 </script>
 
