@@ -371,10 +371,8 @@
             //     this.$refs.loadmore.onBottomLoaded();
             // },
             loadBottom3() {// load more data
-                //this.allLoaded = true;// if all data are loaded
-
-                var maxId = this.ShopDetail[this.ShopDetail.length - 1].id
-                this.ShopDetail.push(
+                var maxId = this.storeDetail[this.storeDetail.length - 1].id
+                this.storeDetail.push(
                     {
                         id: maxId + 1,
                         img: "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fimg2.51tietu.net%2Fupload%2Fwww.51tietu.net%2F2017-041102%2F20170411020717tiazwjsvbni.jpg&refer=http%3A%2F%2Fimg2.51tietu.net&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1629599040&t=1ef993349fa3f81ac7bb2fadd0e74d1f",
